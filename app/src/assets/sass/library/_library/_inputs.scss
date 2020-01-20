@@ -1,0 +1,39 @@
+//-------------------------------------------------------------------
+// Inputs
+// -------------------------------------------------------------------
+
+// Reset
+// -------------------------------------------------------------------
+@mixin input-reset {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: inline-block;
+    vertical-align: baseline;
+    background-color: transparent;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    white-space: normal;
+    appearance: none;
+}
+
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=range],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week] {
+    @extend %input-reset;
+    // To prevent iphone zooming
+    font-size: 16px;
+}

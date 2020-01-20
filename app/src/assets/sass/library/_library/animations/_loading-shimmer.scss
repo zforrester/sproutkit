@@ -1,0 +1,61 @@
+//-------------------------------------------------------------------
+// Loading Shimmer
+//-------------------------------------------------------------------
+
+@keyframes loadingShimmer {
+    0% {
+        background-position: -500px 0;
+        opacity: 0.4;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    100% {
+        background-position: 500px 0;
+        opacity: 0.4;
+    }
+}
+
+// Loading Mixin
+//-------------------------------------------------------------------
+
+$placeholder-background: gray(x-light);
+
+@mixin loading-shimmer {
+    @include transition-slow;
+    background-color: $placeholder-background;
+    position: relative;
+
+    &::after {
+        @include absolute;
+        content: '';
+        opacity: 0.5;
+        background-color: rgba($placeholder-background, 0.25);
+        background-image: linear-gradient(
+                0deg,
+                rgba($placeholder-background, 1) 0%,
+                rgba($placeholder-background, 0) 40%
+            ),
+            linear-gradient(
+                90deg,
+                rgba($placeholder-background, 1) 0%,
+                rgba($placeholder-background, 0) 20%,
+                rgba($placeholder-background, 0) 45%,
+                rgba($placeholder-background, 0.8) 100%
+            ),
+            linear-gradient(
+                65deg,
+                rgba($white, 0) 10%,
+                rgba($white, 1) 50%,
+                rgba($white, 0) 90%
+            );
+        background-size: 1000px;
+        animation: loadingShimmer $t * 8 $t-shine infinite;
+    }
+}

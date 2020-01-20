@@ -1,0 +1,141 @@
+//-------------------------------------------------------------------
+// Colors
+//-------------------------------------------------------------------
+
+// Grayscale
+//-------------------------------------------------------------------
+
+$grayscale: (
+    white:     hsl(255, 255, 255),
+    xxx-light: hsl(220, 10, 98),
+    xx-light:  hsl(220, 15, 90),
+    x-light:   hsl(220, 20, 85),
+    light:     hsl(220, 20, 70),
+    medium:    hsl(220, 20, 50),
+    dark:      hsl(220, 20, 40),
+    x-dark:    hsl(220, 20, 30),
+    xx-dark:   hsl(220, 20, 20),
+    xxx-dark:  hsl(220, 20, 10),
+    black:     hsl(0, 0, 0),
+);
+
+@function gray($gray, $alpha: 1) {
+    @if map-has-key($grayscale, $gray) {
+        $fill: rgba(map-get($grayscale, $gray), $alpha);
+        @return $fill;
+    }
+    @warn "The value '#{$gray}' is not in the list of grays. See _colors.scss for details";
+    @return null;
+}
+
+// Brand Colors
+//-------------------------------------------------------------------
+$lighten: 10;
+$darken: 10;
+
+$colors: (
+    blue: #0094ff,
+    blue-light: lighten(#0094ff, $lighten),
+    blue-dark: #007aff,
+    purple: #2714ff,
+    purple-light: lighten(#2714ff, $lighten),
+);
+
+@function color($color, $alpha: 1) {
+    @if map-has-key($colors, $color) {
+        $fill: rgba(map-get($colors, $color), $alpha);
+        @return $fill;
+    }
+    @warn "The value '#{$color}' is not in the list of colors. See _colors.scss for details";
+    @return null;
+}
+
+// Utility Colours
+//-------------------------------------------------------------------
+
+$color-ui-error: #d8250e;
+$color-ui-success: #79cf17;
+$color-ui-warn: #fda832;
+$color-ui-attention: #6e14e7;
+
+// Font Colours
+//-------------------------------------------------------------------
+
+$font-colors: (
+    dark: (
+        base: gray(xx-dark, 0.8),
+        strong: gray(xxx-dark),
+        supporting: gray(dark, 0.8),
+    ),
+    light: (
+        base: gray(xxx-light, 0.8),
+        strong: gray(white),
+        supporting: gray(xxx-light, 0.6),
+    ),
+    highlight: (
+        base: color(blue),
+        strong: color(blue-dark),
+        supporting: color(blue-light),
+    )
+);
+
+@mixin font-color($color, $shade: base) {
+    @if map-has-key($font-colors, $color) {
+        color: map-deep-get($font-colors, $color, $shade);
+    }
+    @else {
+        @warn "The value '#{$color}' is not in the list of font-colors. See _colors.scss for details";
+    }
+}
+
+// Gradients
+//-------------------------------------------------------------------
+
+// Fade gradient from a single color to transparent
+@mixin gradient-fade($color, $angle: 0deg, $stop: 100%) {
+    background: linear-gradient($angle, rgba($color, 0), $color $stop);
+}
+
+// Gradient between 2 colors
+@mixin gradient($start-color, $end-color, $angle: 180deg, $stop: 100%) {
+    background: linear-gradient($angle, $start-color, $end-color $stop);
+}
+
+// Color Themed Elements
+//-------------------------------------------------------------------
+
+// Basic selectors for all themeable elements are collected in mixin
+@mixin theme(
+    $theme,
+    $theme-gradient-start,
+    $theme-gradient-end,
+    $angle: 180deg
+) {
+    // Apply theme color to type
+    %theme-color {
+        color: $theme;
+    }
+
+    // Apply theme color to background and finds a contrasting color for text
+    %theme-bg {
+        @include contrast-color($theme);
+    }
+
+    // Apply theme color to border
+    %theme-border {
+        border-color: $theme;
+    }
+
+    // Apply theme gradient to background
+    %theme-gradient {
+        @include gradient($theme-gradient-start, $theme-gradient-end, $angle);
+    }
+
+    // Sample usage
+    //----------------------
+    // .theme
+    //     +theme($brand-blue, $brand-blue-light, $brand-blue-dark)
+    //
+    // .primary-cta
+    //     @extend %theme-gradient
+}

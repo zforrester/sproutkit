@@ -1,0 +1,149 @@
+//-------------------------------------------------------------------
+// Structure
+//-------------------------------------------------------------------
+
+// Screen Sizes for Media Queries
+//-------------------------------------------------------------------
+// S stands for Screen
+$s-xxx-large:     em(1900px);
+$s-xx-large:      em(1640px);
+$s-x-large:       em(1366px);
+$s-large:         em(1280px);
+
+$s-medium-large:  em(975px);
+$s-medium:        em(768px);
+$s-medium-small:  em(640px);
+
+$s-small:         em(520px);
+$s-x-small:       em(375px);
+$s-xx-small:      em(360px);
+$s-xxx-small:     em(320px);
+
+// Dimensions
+//-------------------------------------------------------------------
+// D stands for Dimension
+
+$d-base: 8px;
+
+@function d($scale) {
+    @return $d-base * $scale;
+}
+
+// Z-Index Scheme
+//-------------------------------------------------------------------
+// z stands for z-index
+
+$z-under: -1;
+$z-zero: 0;
+$z-flat: 1;
+$z-high: 10;
+$z-x-high: 100;
+$z-xx-high: 1000;
+$z-xxx-high: 10000;
+$z-xxxx-high: 100000;
+
+// Shadows
+//-------------------------------------------------------------------
+
+@function shadow($style, $shadow-color: gray(xxx-dark), $opacity: 0.1) {
+
+    $shadows: (
+        border: (
+            0 0 0 1px $shadow-color
+        ),
+        1: (
+            0 0px 1px 0 rgba($shadow-color, $opacity),
+            0 1px 2px 0 rgba($shadow-color, $opacity),
+            0 1px 4px 0 rgba($shadow-color, $opacity),
+            0 1px 6px 0 rgba($shadow-color, $opacity)
+        ),
+        2: (
+            0 0px 2px 0 rgba($shadow-color, $opacity),
+            0 2px 6px -1px rgba($shadow-color, $opacity),
+            0 4px 12px -2px rgba($shadow-color, $opacity),
+            0 8px 18px -4px rgba($shadow-color, $opacity)
+        ),
+        3: (
+            0 0px 5px 0 rgba($shadow-color, $opacity),
+            0 10px 10px 0 rgba($shadow-color, $opacity),
+            0 10px 20px -10px rgba($shadow-color, $opacity),
+            0 20px 30px -20px rgba($shadow-color, $opacity)
+        ),
+        4: (
+            0 0px 10px 0 rgba($shadow-color, $opacity),
+            0 10px 20px -10px rgba($shadow-color, $opacity),
+            0 30px 20px -10px rgba($shadow-color, $opacity),
+            0 40px 40px -10px rgba($shadow-color, $opacity)
+        ),
+        5: (
+            0 0px 20px 0 rgba($shadow-color, $opacity),
+            0 40px 20px -20px rgba($shadow-color, $opacity),
+            0 60px 40px -20px rgba($shadow-color, $opacity * 2),
+            0 80px 80px -40px rgba($shadow-color, $opacity * 2)
+        ),
+        6: (
+            0 0px 40px 0 rgba($shadow-color, $opacity),
+            0 40px 40px -10px rgba($shadow-color, $opacity * 2),
+            0 60px 60px -20px rgba($shadow-color, $opacity * 3),
+            0 80px 120px -40px rgba($shadow-color, $opacity * 4)
+        )
+    );
+    $style: map-get($shadows, $style);
+    @return $style;
+}
+
+// Glow
+//-------------------------------------------------------------------
+
+
+@function glow($size: 1, $glow-color: color(blue), $steps: 2, $alpha: .5) {
+    $glows: null;
+
+    @for $i from 1 through $steps {
+        $glow-layer: 0 0 d(($i * $size) / $steps) rgba($glow-color, $alpha / $i);
+
+        $glows: append($glows, $glow-layer, comma);
+    }
+
+    @return $glows;
+}
+
+// Lines
+//-------------------------------------------------------------------
+
+$lines: (
+    light:  1px solid gray(light, 0.4),
+    dark:   1px solid gray(x-dark, 0.5),
+    normal: 1px solid gray(medium, 0.3)
+);
+
+@function line($style: normal) {
+    @if map-has-key($lines, $style) {
+        $style: map-get($lines, $style);
+        @return $style;
+    }
+    @warn "'#{$style}' is not a valid line style. See _structure.scss for a list of acceptable values";
+    @return null;
+}
+
+// Border Radius
+//-------------------------------------------------------------------
+// BR stands for border radius
+
+$radii: (
+    x-large:  16px,
+    large:    10px,
+    medium:   8px,
+    small:    6px,
+    x-small:  4px,
+    xx-small: 2px,
+);
+
+@function radius($size) {
+    @if map-has-key($radii, $size) {
+        $size: map-get($radii, $size);
+        @return $size;
+    }
+    @warn "'#{$size}' is not a valid border radius value. See _structure.scss for a list of acceptable values";
+    @return null;
+}

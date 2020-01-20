@@ -1,0 +1,13 @@
+// Icon Library
+//-------------------------------------------------------------------
+// List out each icon file to generate a CSS class
+$glyphs: (
+    // plus,
+    // close
+);
+
+@each $glyph in $glyphs {
+    .icon-#{$glyph} {
+        @include icon($glyph);
+    }
+}
