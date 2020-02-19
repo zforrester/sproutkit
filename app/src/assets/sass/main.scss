@@ -2,27 +2,29 @@
 @import "library/library";
 
 body {
-  background-color: $body-bg;
+  // background-color: $body-bg;
 }
 
 h1 {
-    background: gray('white');
+    color: color('gray', .5);
+    background: color('blue', .5);
+}
     // color: font-color('dark', 'strong');
     // font-size: font-size('xx-large');
     // font-family: $font-family-primary;
-    @include font($title, 'large');
-    max-width: $s-large;
-    padding: d(6);
-    box-shadow: shadow(1), glow(10);
-    outline: line(color('blue-dark'));
-
-    @include mq($s-large)
-
-    span {
-        @include strong;
-        // margin-bottom: map-deep-get($title, 'small', 'font-size');
-    }
-}
+//     @include font($title, 'large');
+//     max-width: $s-large;
+//     padding: d(6);
+//     box-shadow: shadow(1), glow(10);
+//     outline: line(color('blue-dark'));
+//
+//     @include mq($s-large)
+//
+//     span {
+//         @include strong;
+//         // margin-bottom: map-deep-get($title, 'small', 'font-size');
+//     }
+// }
 //     @include font($title, 'hero');
 //
 //     span {
