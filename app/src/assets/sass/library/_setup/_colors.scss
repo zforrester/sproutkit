@@ -34,50 +34,26 @@ $palletes: (
         'attention': #6e14e7,
     ),
 );
-//
-// @function merged($color, $shade, $alpha: 1) {
-//     @if map-has-key($brand, $color){
-//         $color: map-get($brand, $color);
-//         @return rgba($color, $alpha );
-//     }
-//
-//     @if map-has-key($grayscale, $color){
-//         $color: map-deep-get($grayscale, $color, $shade);
-//         @return rgba($color, $alpha );
-//     }
-//
-//     @return null;
-// }
-@function color($pallete, $color: '', $alpha: 1) {
-    $pallete: map-get($palletes, $pallete);
-    $type: type-of($pallete);
 
+@function color($pallete, $shade: 1, $alpha: 1) {
     @if map-has-key($palletes, $pallete) {
+        $color: map-get($palletes, $pallete);
+        $type: type-of($color);
         @if $type == 'map' {
-            $default-color: map-get(nth($pallete, 1));
-            $color: map-deep-get($palletes, $pallete, $default-color);
+            @if map-has-key(map-get($palletes, $pallete), $shade) {
+                $color: map-deep-get($palletes, $pallete, $shade);
+            } @else {
+                @warn "The value '#{$shade}' is not in the list of values for this color. See _colors.scss for details";
+                @return null;
+            }
         } @else {
+            $alpha: $shade;
             $color: map-get($palletes, $pallete);
         }
-
-        @return rgba($color, .5);
+        @return rgba($color, $alpha);
     }
-    // @debug $type;
 
-    // @if length(map-get($palletes, $pallete)) > 0 {
-    //     $color: map-deep-get($palletes, $pallete, $color);
-    // }
-    // @else {
-    //     $color: map-get($palletes, $pallete);
-    // }
-    // @return rgba($color, $alpha );
-
-    // @if map-has-key($pallete, $color) {
-    //     $color: map-get($pallete, $color);
-    //     @return rgba($color, $alpha );
-    // }
-
-    // @warn "The value '#{$color}' is not in the list of grays. See _colors.scss for details";
+    @warn "The value '#{$pallete}' is not in the list of colors. See _colors.scss for details";
     @return null;
 }
 

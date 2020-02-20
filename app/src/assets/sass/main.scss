@@ -6,8 +6,9 @@ body {
 }
 
 h1 {
-    color: color('gray', .5);
+    color: color('gray', 'green');
     background: color('blue', .5);
+    border-bottom: darken(color('blue', .5), 30%);
 }
     // color: font-color('dark', 'strong');
     // font-size: font-size('xx-large');
