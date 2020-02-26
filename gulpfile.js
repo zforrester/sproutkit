@@ -105,6 +105,9 @@ gulp.task('images', function() {
         .pipe(notify({ message: 'Images complete' }));
 });
 
+//zach
+
+
 // Scripts minify and move
 gulp.task('scripts', function() {
     return gulp.src('app/src/assets/js/*.js')
