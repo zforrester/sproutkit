@@ -45,7 +45,7 @@ $z-xxxx-high: 100000;
 // Shadows
 //-------------------------------------------------------------------
 
-@function shadow($style, $shadow-color: gray(xxx-dark), $opacity: 0.1) {
+@function shadow($style, $shadow-color: gray(100), $opacity: 0.1) {
 
     $shadows: (
         border: (
@@ -118,12 +118,8 @@ $lines: (
 );
 
 @function line($style: normal) {
-    @if map-has-key($lines, $style) {
-        $style: map-get($lines, $style);
-        @return $style;
-    }
-    @warn "'#{$style}' is not a valid line style. See _structure.scss for a list of acceptable values";
-    @return null;
+    $style: map-get($lines, $style);
+    @return $style;
 }
 
 // Border Radius

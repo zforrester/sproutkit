@@ -1,10 +1,18 @@
-# Fissionkit
+# My Site
 
-## Library
-Path: `app/src/assets/sass/library`
+## Setup
+### External Dependencies
+- Install NPM
+  https://nodejs.org/en/
+- Install Gulp globally
+  `npm install --global gulp-cli`
+  https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md
 
-Duplicate `library` folder into your project. Import into your project by adding the import rules at the top of your main scss file.
-    ```
-    @import "library/reset";
-    @import "library/library";
-    ```
+### Initiate
+- Run
+  `npm install`
+
+- Run
+  `gulp`
+
+  The project should now be running and ready to be worked on

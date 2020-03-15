@@ -69,6 +69,29 @@
     bottom: 0;
 }
 
+@mixin center-child($method: 'flex') {
+    @if $method == 'flex' {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        * > {
+            margin: auto;
+        }
+    }
+
+    @if $method == 'absolute' {
+        position: relative;
+
+        > * {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+        }
+    }
+}
+
 // Clear Fix
 @mixin clearfix {
     &::after {
@@ -108,17 +131,16 @@
 
 // Displaying and Hiding Content
 @mixin show($state) {
+    will-change: auto;
     @if $state == on {
         pointer-events: auto;
         visibility: visible;
-        will-change: auto;
         opacity: 1;
     }
 
     @if $state == off {
         pointer-events: none;
         visibility: hidden;
-        will-change: auto;
         opacity: 0;
     }
 }

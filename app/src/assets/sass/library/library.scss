@@ -5,24 +5,24 @@
 // Mixins
 //-------------------------------------------------------------------
 
-@import "_library/_mixins";
+@import "_mixins";
 
 // Setup
 //-------------------------------------------------------------------
 
-@import "_library/_colors";
-@import "_library/_structure";
-@import "_library/_typography";
-@import "_library/_motion";
-@import "_library/_images";
-@import "_library/_icons";
+@import "_setup/_colors";
+// @import "_setup/_structure";
+// @import "_setup/_typography";
+// @import "_setup/_motion";
+// @import "_setup/_images";
+// @import "_setup/_icons";
 
 // Elements
 //-------------------------------------------------------------------
-@import "_library/_buttons";
-@import "_library/_icon-library";
+// @import "elements/_buttons";
+// @import "elements/_icon-library";
 
 // Variables
 //-------------------------------------------------------------------
 
-@import "_library/_variables";
+@import "_variables";

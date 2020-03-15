@@ -1,0 +1,94 @@
+//-------------------------------------------------------------------
+// Colors
+//-------------------------------------------------------------------
+
+// Pallete
+//-------------------------------------------------------------------
+$palletes: (
+    'white': #fff,
+    'black': #000,
+    'blue': #0094ff,
+    'purple': #2714ff,
+    'gray': (
+        '100': hsl(220, 10, 98),
+        '200': hsl(220, 15, 90),
+        '300': hsl(220, 20, 85),
+        '400': hsl(220, 20, 70),
+        '500': hsl(220, 20, 50),
+        '600': hsl(220, 20, 40),
+        '700': hsl(200, 20, 35),
+        '800': hsl(220, 20, 20),
+        '900': hsl(220, 20, 10),
+    ),
+    'brand': (
+        'blue': #0094ff,
+        'purple': #2714ff,
+    ),
+    'utility': (
+        'error': #d8250e,
+        'success': #79cf17,
+        'warn': #fda832,
+        'attention': #6e14e7,
+    ),
+);
+
+@function color($pallete, $shade: 1, $alpha: 1) {
+    @if map-has-key($palletes, $pallete) {
+        $color: map-get($palletes, $pallete);
+        $type: type-of($color);
+        @if $type == 'map' {
+            @if map-has-key(map-get($palletes, $pallete), $shade) {
+                $color: map-deep-get($palletes, $pallete, $shade);
+            } @else {
+                @warn "The value '#{$shade}' is not in the list of values for this color. See _colors.scss for details";
+                @return null;
+            }
+        } @else {
+            $alpha: $shade;
+            $color: map-get($palletes, $pallete);
+        }
+        @return rgba($color, $alpha);
+    }
+
+    @warn "The value '#{$pallete}' is not in the list of colors. See _colors.scss for details";
+    @return null;
+}
+
+// Font Colours
+//-------------------------------------------------------------------
+
+$font-colors: (
+    'dark': (
+        'strong': color('gray', '900'),
+        'supporting': color('gray', '700'),
+        'auxiliary': color('gray', '600'),
+    ),
+    'light': (
+        'strong': color('gray', '100'),
+        'supporting': color('gray', '300', 0.8),
+        'auxiliary': color('gray', '400'),
+    ),
+    'blue': color('blue'),
+);
+
+@function font-color($theme, $strength: strong) {
+    @if map-has-key($font-colors, $theme) {
+        @if type-of(map-get($font-colors, $theme)) == 'map' {
+            $color: map-deep-get($font-colors, $theme, $strength);
+            @return $color;
+        } @else {
+            $color: map-get($font-colors, $theme);
+            @return $color;
+        }
+    }
+    @warn "The value '#{$theme}' is not in the list of font-colors. See _colors.scss for details";
+    @return null;
+}
+
+// Gradients
+//-------------------------------------------------------------------
+
+// Fade gradient from a single color to transparent
+@mixin gradient-fade($color, $angle: 0deg, $stop: 100%) {
+    background: linear-gradient($angle, rgba($color, 0), $color $stop);
+}

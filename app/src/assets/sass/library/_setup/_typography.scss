@@ -1,0 +1,215 @@
+//-------------------------------------------------------------------
+// Typography
+//-------------------------------------------------------------------
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,700,700i');
+
+// Font Families
+//-------------------------------------------------------------------
+
+$font-family-primary: 'Montserrat', sans-serif;
+$font-family-secondary: 'Josefin Sans', sans-serif;
+
+// Typographic Scale
+//-------------------------------------------------------------------
+
+$font-sizes: (
+    'xx-huge': 74px,
+    'x-huge': 56px,
+    'huge': 48px,
+    'xx-large': 32px,
+    'x-large': 24px,
+    'large': 18px,
+    'medium': 16px,
+    'small': 14px,
+    'x-small': 12px,
+    'xx-small': 11px,
+);
+
+@function font-size($size) {
+    @if map-has-key($font-sizes, $size) {
+        $size: map-get($font-sizes, $size);
+
+        @return rem($size);
+    }
+    @else {
+        @warn "'#{$size}' is not a valid font size. See _typography.scss for a list of acceptable values";
+        @return null;
+    }
+}
+
+// Font Weights
+//-------------------------------------------------------------------
+
+$font-weights: (
+    'thin': 100,
+    'extra-light': 200,
+    'light': 300,
+    'regular': 400,
+    'medium': 500,
+    'semi-bold': 600,
+    'bold': 700,
+    'extra-bold': 800,
+    'black': 900,
+);
+
+@function font-weight($weight: regular) {
+    @if map-has-key($font-weights, $weight) {
+        @return map-get($font-weights, $weight);
+    }
+
+    @else {
+        @warn "'#{$weight}' is not a valid font weight. See _typography.scss for a list of acceptable values";
+        @return null;
+    }
+}
+
+// Line heights
+//-------------------------------------------------------------------
+
+$line-heights: (
+    'single': 1,
+    'small': 1.2,
+    'normal': 1.6,
+    'large': 1.8,
+);
+
+@function line-height($height: 'normal') {
+    @if map-has-key($line-heights, $height) {
+        $height: map-get($line-heights, $height);
+        @return $height;
+    }
+
+    @else {
+        @warn "'#{$height}' is not a valid line-height. See _typography.scss for a list of acceptable values";
+        @return null;
+    }
+}
+// Font Styles
+//-------------------------------------------------------------------
+@mixin strong() {
+    @extend %strong !optional;
+}
+// Find the style from the library and print out its properties
+@mixin font($library, $style: 'default', $weight: 'regular') {
+
+    $default-style: map-get($library, default);
+    $style: map-get($library, $style);
+
+    @each $key, $value in $default-style {
+        @if $key == $weight {
+            font-weight: $value;
+        }
+
+        @if $key != 'regular' {
+            @if $key != 'strong' {
+                #{$key}: $value;
+            }
+        }
+    }
+
+    @each $key, $value in $style {
+        @if $key == $weight {
+            font-weight: $value;
+        }
+
+        @if $key != 'regular' {
+            @if $key != 'strong' {
+                #{$key}: $value;
+            }
+        }
+    }
+
+    %strong {
+        font-weight: map-get($style, 'strong');
+    }
+}
+
+
+
+// Title Styles
+//-------------------------------------------------------------------
+
+$title: (
+    'default': (
+        font-family: $font-family-primary,
+        line-height: line-height('single'),
+    ),
+    'hero': (
+        font-size: font-size('xx-huge'),
+        'regular': font-weight('thin'),
+        'strong': font-weight('medium'),
+    ),
+    'large': (
+        font-family: $font-family-secondary,
+        font-size: font-size('large'),
+        line-height: line-height('small'),
+        'regular': font-weight('medium'),
+        'strong': font-weight('bold'),
+    ),
+    'medium': (
+        font-family: $font-family-secondary,
+        font-size: font-size('large'),
+        font-weight: font-size('large'),
+        line-height: line-height('small'),
+    ),
+    'small': (
+        font-size: font-size('small'),
+        text-transform: uppercase,
+        letter-spacing: .24em,
+        'regular': font-weight('semi-bold'),
+        'strong': font-weight('black'),
+    ),
+);
+
+// Body Styles
+//-------------------------------------------------------------------
+
+$body: (
+    'default': (
+        font-family: $font-family-primary,
+    ),
+    'large': (
+    ),
+    'medium': (
+    ),
+    'small': (
+        font-size: font-size('small'),
+        'regular': font-weight('medium'),
+    ),
+    'x-small': (
+        font-size: font-size('x-small'),
+        'regular': font-weight('medium'),
+    ),
+);
+
+// Interface Styles
+//-------------------------------------------------------------------
+
+$interface: (
+    'default': (
+        font-family: $font-family-primary,
+        color: red,
+    ),
+    'x-small': (
+        font-size: font-size('x-small'),
+        'regular': font-weight('medium'),
+        'strong': font-weight('bold'),
+    ),
+    'small': (
+        font-size: font-size('x-small'),
+        'regular': font-weight('medium'),
+        'strong': font-weight('bold'),
+    ),
+    'medium': (
+        font-size: font-size('small'),
+        'regular': font-weight('medium'),
+        'strong': font-weight('bold'),
+    ),
+    'large': (
+        font-size: font-size('large'),
+        'regular': font-weight('regular'),
+        'strong': font-weight('bold'),
+    ),
+);
