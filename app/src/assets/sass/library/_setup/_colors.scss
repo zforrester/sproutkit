@@ -9,24 +9,21 @@ $palletes: (
     'black': #000,
     'blue': #0094ff,
     'purple': #2714ff,
-
     'gray': (
-        '10': hsl(220, 10, 98),
-        '20': hsl(220, 15, 90),
-        '30': hsl(220, 20, 85),
-        '40': hsl(220, 20, 70),
-        '50': hsl(220, 20, 50),
-        '60': hsl(220, 20, 40),
-        '80': hsl(200, 20, 35),
-        '90': hsl(220, 20, 20),
-        '100': hsl(220, 20, 10),
+        '100': hsl(220, 10, 98),
+        '200': hsl(220, 15, 90),
+        '300': hsl(220, 20, 85),
+        '400': hsl(220, 20, 70),
+        '500': hsl(220, 20, 50),
+        '600': hsl(220, 20, 40),
+        '700': hsl(200, 20, 35),
+        '800': hsl(220, 20, 20),
+        '900': hsl(220, 20, 10),
     ),
-
     'brand': (
         'blue': #0094ff,
         'purple': #2714ff,
     ),
-
     'utility': (
         'error': #d8250e,
         'success': #79cf17,
@@ -61,33 +58,31 @@ $palletes: (
 //-------------------------------------------------------------------
 
 $font-colors: (
-    strong: (),
-    supporting: (),
-
-    // dark: (
-    //     base: gray(xx-dark, 0.8),
-    //     strong: gray(xxx-dark),
-    //     supporting: gray(dark, 0.8),
-    // ),
-    // light: (
-    //     base: gray(xxx-light, 0.8),
-    //     strong: gray(white),
-    //     supporting: gray(xxx-light, 0.6),
-    // ),
-    // highlight: (
-    //     base: color(blue),
-    //     strong: color(blue-dark),
-    //     supporting: color(blue-light),
-    // )
+    'dark': (
+        'strong': color('gray', '900'),
+        'supporting': color('gray', '700'),
+        'auxiliary': color('gray', '600'),
+    ),
+    'light': (
+        'strong': color('gray', '100'),
+        'supporting': color('gray', '300', 0.8),
+        'auxiliary': color('gray', '400'),
+    ),
+    'blue': color('blue'),
 );
 
-@mixin font-color($color, $shade: base) {
-    @if map-has-key($font-colors, $color) {
-        color: map-deep-get($font-colors, $color, $shade);
+@function font-color($theme, $strength: strong) {
+    @if map-has-key($font-colors, $theme) {
+        @if type-of(map-get($font-colors, $theme)) == 'map' {
+            $color: map-deep-get($font-colors, $theme, $strength);
+            @return $color;
+        } @else {
+            $color: map-get($font-colors, $theme);
+            @return $color;
+        }
     }
-    @else {
-        @warn "The value '#{$color}' is not in the list of font-colors. See _colors.scss for details";
-    }
+    @warn "The value '#{$theme}' is not in the list of font-colors. See _colors.scss for details";
+    @return null;
 }
 
 // Gradients

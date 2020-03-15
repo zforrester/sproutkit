@@ -1,18 +1,35 @@
 // @import "library/reset";
-@import "library/library";
+@import 'library/library';
 
 body {
-  // background-color: $body-bg;
+    // background-color: $body-bg;
 }
 
-h1 {
-    color: color('gray', 'green');
-    background: color('blue', .5);
-    border-bottom: darken(color('blue', .5), 30%);
+.header {
+    background: color('gray', '200');
+    padding: 40px;
+
+    h1 {
+        color: font-color('dark', 'strong');
+    }
+    span {
+        color: font-color('dark', 'supporting');
+    }
 }
-    // color: font-color('dark', 'strong');
-    // font-size: font-size('xx-large');
-    // font-family: $font-family-primary;
+.dark {
+    background: color('gray', '800');
+
+    h1 {
+        color: font-color('light', 'strong');
+    }
+    span {
+        color: font-color('light', 'auxiliary');
+    }
+}
+
+// color: font-color('dark', 'strong');
+// font-size: font-size('xx-large');
+// font-family: $font-family-primary;
 //     @include font($title, 'large');
 //     max-width: $s-large;
 //     padding: d(6);

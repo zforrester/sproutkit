@@ -1,5 +1,22 @@
-h1 {
-  background: rgba(0, 148, 255, 0.5);
-  border-bottom: rgba(0, 59, 102, 0.5); }
+.header {
+    background: #e2e4e9;
+    padding: 40px;
+}
+.header h1 {
+    color: #14181f;
+}
+.header span {
+    color: #475f6b;
+}
+
+.dark {
+    background: #29303d;
+}
+.dark h1 {
+    color: #f9fafa;
+}
+.dark span {
+    color: #a3adc2;
+}
 
 /*# sourceMappingURL=main.css.map */
