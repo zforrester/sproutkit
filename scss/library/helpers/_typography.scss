@@ -1,0 +1,70 @@
+//-------------------------------------------------------------------
+// Typography Helper Functions
+//-------------------------------------------------------------------
+@function font-size($size) {
+    @if map-has-key($font-sizes, $size) {
+        $size: map-get($font-sizes, $size);
+        @return rem($size);
+    } @else {
+        @warn errorMessage($size, 'tokens/_typography.scss');
+        @return null;
+    }
+}
+
+@function font-weight($weight: regular) {
+    @if map-has-key($font-weights, $weight) {
+        @return map-get($font-weights, $weight);
+    } @else {
+        @warn errorMessage($weight, 'tokens/_typography.scss');
+        @return null;
+    }
+}
+
+@function line-height($height: 'normal') {
+    @if map-has-key($line-heights, $height) {
+        $height: map-get($line-heights, $height);
+        @return $height;
+    } @else {
+        @warn errorMessage($height, 'tokens/_typography.scss');
+        @return null;
+    }
+}
+
+// Font Styles
+//-------------------------------------------------------------------
+@mixin strong() {
+    @extend %strong !optional;
+}
+// Find the style from the library and print out its properties
+@mixin font($library, $style: 'default', $weight: 'regular') {
+    $default-style: map-get($library, default);
+    $style: map-get($library, $style);
+
+    @each $key, $value in $default-style {
+        @if $key == $weight {
+            font-weight: $value;
+        }
+
+        @if $key != 'regular' {
+            @if $key != 'strong' {
+                #{$key}: $value;
+            }
+        }
+    }
+
+    @each $key, $value in $style {
+        @if $key == $weight {
+            font-weight: $value;
+        }
+
+        @if $key != 'regular' {
+            @if $key != 'strong' {
+                #{$key}: $value;
+            }
+        }
+    }
+
+    %strong {
+        font-weight: map-get($style, 'strong');
+    }
+}

@@ -41,9 +41,9 @@
         }
     } @else {
         padding: env(safe-area-inset-top)
-        env(safe-area-inset-right)
-        env(safe-area-inset-bottom)
-        env(safe-area-inset-left);
+            env(safe-area-inset-right)
+            env(safe-area-inset-bottom)
+            env(safe-area-inset-left);
     }
 }
 
@@ -61,12 +61,29 @@
 }
 
 // Quick Absolute Positioning
-@mixin absolute {
+@mixin absolute($coordinates...) {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    @include coordinates($coordinates...);
+}
+
+@mixin coordinates($offset: null, $right: null, $bottom: null, $left: null) {
+    @if $right {
+        top: $offset;
+        left: $left;
+        right: $right;
+        bottom: $bottom;
+    }
+    @elseif $offset {
+        top: $offset;
+        left: $offset;
+        right: $offset;
+        bottom: $offset;
+    } @else {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
 }
 
 @mixin center-child($method: 'flex') {
@@ -224,11 +241,17 @@
     @each $key in $keys {
         @if map-has-key($map, $key) {
             $map: map-get($map, $key);
-        }
-        @else {
+        } @else {
             $map: null;
-            @warn "The key '#{$key}' does not exist in the map you have specified" ;
+            @warn "The key '#{$key}' does not exist in the map you have specified";
         }
     }
     @return $map;
+}
+
+// Error Message
+// -----------------------------------------------------------------------------
+
+@function errorMessage($value, $file) {
+    @return "The value '#{$value}' is not a valid option. See '#{$file}' for details";
 }

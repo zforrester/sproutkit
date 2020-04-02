@@ -2,7 +2,14 @@
 // -------------------------------------------------------------------
 
 @import 'helpers/_mixins';
-// Colors
 @import 'helpers/_colors';
+@import 'helpers/_typography';
+@import 'helpers/_structure';
+@import 'helpers/_motion';
+
+// Design Tokens
+// -------------------------------------------------------------------
+
 @import 'tokens/_colors';
-// Typography
+@import 'tokens/_typography';
+@import 'tokens/_structure';

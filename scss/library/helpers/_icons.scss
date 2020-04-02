@@ -1,0 +1,51 @@
+//-------------------------------------------------------------------
+// Icons
+//-------------------------------------------------------------------
+
+// Icon Base Settings
+// -------------------------------------------------------------------
+
+// Used to apply icon glyphs through CSS
+@mixin icon($name) {
+    mask: url('~@/assets/icons/#{$name}.svg') no-repeat 50% 50%;
+    @include bg(contain);
+    @include show-icon-guides;
+    @include transition;
+}
+
+// Used for poitioning inline SVG icons
+@mixin icon-inline {
+    @include show-icon-guides;
+    position: relative;
+
+    svg {
+        @include absolute;
+        @include transition-fast;
+        height: 100%;
+        width: 100%;
+
+        path {
+            @include transition-fast;
+        }
+    }
+}
+
+// Icon Layout Guides
+// -------------------------------------------------------------------
+
+// Set to True to show guidelines
+$show-icon-guides: false;
+
+@mixin show-icon-guides {
+    @if $show-icon-guides {
+        position: relative;
+
+        &::after {
+            content: '';
+            @include absolute;
+            @include bg(contain);
+            background-image: url('library-icon-guide.svg');
+            z-index: $z-under;
+        }
+    }
+}

@@ -1,6 +1,6 @@
-@function errorMessage($value, $file) {
-    @return "The value '#{$value}' is not a valid option. See '#{$file}' for details";
-}
+//-------------------------------------------------------------------
+// Color Helper Functions
+//-------------------------------------------------------------------
 
 @function color($pallete, $shade: 1, $alpha: 1) {
     @if map-has-key($colors, $pallete) {
@@ -10,7 +10,7 @@
             @if map-has-key(map-get($colors, $pallete), $shade) {
                 $color: map-deep-get($colors, $pallete, $shade);
             } @else {
-                @warn errorMessage($shade, 'tokens/_colors');
+                @warn errorMessage($shade, 'tokens/_colors.scss');
                 @return null;
             }
         } @else {
@@ -20,7 +20,7 @@
         @return rgba($color, $alpha);
     }
 
-    @warn errorMessage($pallete, 'tokens/_colors');
+    @warn errorMessage($pallete, 'tokens/_colors.scss');
     @return null;
 }
 
@@ -32,7 +32,7 @@
             @if map-has-key(map-get($font-colors, $shade), $strength) {
                 $color: map-deep-get($font-colors, $shade, $strength);
             } @else {
-                @warn errorMessage($strength, 'tokens/_colors');
+                @warn errorMessage($strength, 'tokens/_colors.scss');
                 @return null;
             }
         } @else {
@@ -40,6 +40,6 @@
         }
         @return $color;
     }
-    @warn errorMessage($shade, 'tokens/_colors');
+    @warn errorMessage($shade, 'tokens/_colors.scss');
     @return null;
 }

@@ -2,4 +2,15 @@
 
 body {
     background: color('gray', '500');
+    font-size: font-size('xx-huge');
+    @include font($text, 'medium');
+    z-index: z('6');
+    border-bottom: line();
+    padding-bottom: d(4);
+    @include absolute(4px);
+    @include mq(screen-size('medium'), 'min-width') {
+        z-index: z('5');
+        @include coordinates;
+        // @include animate(fadeIn);
+    }
 }
