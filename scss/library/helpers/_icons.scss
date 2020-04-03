@@ -7,11 +7,7 @@
 
 // Used to apply icon glyphs through CSS
 @mixin icon($name) {
-    @debug 'TRUE';
-    @debug index($icon-list, $name);
-
     @if index($icon-list, $name) {
-        // @debug 'TRUE';/
         mask: url('~@/assets/icons/#{$name}.svg') no-repeat 50% 50%;
     } @else {
         @warn errorMessage($name, 'tokens/_icons.scss');

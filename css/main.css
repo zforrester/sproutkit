@@ -1,9 +1,32 @@
-.icon {
-  background: #0094ff;
-  mask: url("~@/assets/icons/plus.svg") no-repeat 50% 50%;
-  will-change: all;
-  transition: 0.3s cubic-bezier(0.3, 0.9, 0.4, 0.98);
-  transition-property: all; }
-  @media (prefers-reduced-motion: reduce) {
-    .icon {
-      transition-duration: 0; } }
+button span {
+  display: block; }
+
+button.small .label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px; }
+
+button.medium .label, .cta .label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 8px 12px; }
+
+button.large .label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 12px 24px; }
+
+button.primary {
+  background: red; }
+
+button.secondary, .cta {
+  background: blue; }
+
+button.tertiary {
+  background: green; }
+
+button.link {
+  color: blue; }

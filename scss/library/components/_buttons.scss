@@ -1,0 +1,102 @@
+//-------------------------------------------------------------------
+// Buttons
+// -------------------------------------------------------------------
+
+// Reset
+// -------------------------------------------------------------------
+@mixin button-reset {
+    background: rgba(white, 0);
+    border: 0 solid rgba(white, 0);
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    line-height: 1;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+}
+
+button {
+    span {
+        display: block;
+    }
+}
+
+$button-states: (
+    'default',
+    'loading',
+    'disabled',
+    'hover',
+    'active',
+    'focused'
+);
+
+$button-styles: ('primary', 'secondary', 'tertiary', 'link');
+$button-sizes: ('small', 'medium', 'large');
+$button-layout: ('block', 'inline');
+$button-allignmentt: ('label-left', 'label-center', 'label-right');
+
+// Button Sizes
+//-------------------------------------------------------------------
+
+%small {
+    .label {
+        @include font($text, 'x-small', 'strong');
+        padding: d(0.5) d(1);
+    }
+}
+%medium {
+    .label {
+        @include font($text, 'small', 'strong');
+        padding: d(1) d(1.5);
+    }
+}
+%large {
+    .label {
+        @include font($text, 'large', 'strong');
+        padding: d(1.5) d(3);
+    }
+}
+
+// Button Styles
+//-------------------------------------------------------------------
+
+%primary {
+    background: red;
+}
+%secondary {
+    background: blue;
+}
+%tertiary {
+    background: green;
+}
+%link {
+    color: blue;
+}
+
+// Button Functionss
+//-------------------------------------------------------------------
+
+@mixin button-style($style) {
+    @if index($button-styles, $style) {
+        @extend %#{$style};
+    } @else {
+        @warn errorMessage($style, 'components/_buttons.scss');
+    }
+}
+
+@mixin button-size($size) {
+    @if index($button-sizes, $size) {
+        @extend %#{$size};
+    } @else {
+        @warn errorMessage($size, 'components/_buttons.scss');
+    }
+}
+
+@mixin button($style: '', $size: '') {
+    @include button-style($style);
+    @include button-size($size);
+}
