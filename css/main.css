@@ -1,22 +1,9 @@
-body {
-  background: #667799;
-  font-size: 4.5rem;
-  font-family: "Montserrat", sans-serif;
-  color: red;
-  font-size: 0.875rem;
-  font-weight: 500;
-  z-index: 100000;
-  border-bottom: 1px solid gray(medium, 0.3);
-  padding-bottom: 32px;
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  right: 4px;
-  bottom: 4px; }
-  @media only screen and (min-width: 48rem) {
-    body {
-      z-index: 10000;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0; } }
+.icon {
+  background: #0094ff;
+  mask: url("~@/assets/icons/plus.svg") no-repeat 50% 50%;
+  will-change: all;
+  transition: 0.3s cubic-bezier(0.3, 0.9, 0.4, 0.98);
+  transition-property: all; }
+  @media (prefers-reduced-motion: reduce) {
+    .icon {
+      transition-duration: 0; } }

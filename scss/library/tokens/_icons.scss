@@ -1,0 +1,17 @@
+// Icon Library
+//-------------------------------------------------------------------
+// List out each icon file to generate a CSS class
+
+$icon-list: ('plus', 'plus-large');
+
+// Icon Sizes
+//-------------------------------------------------------------------
+
+$icon-sizes: (
+    'x-large': d(10),
+    'large': d(6),
+    'medium': d(4),
+    'small': d(3),
+    'x-small': d(2),
+    'xx-small': d(1.5),
+);

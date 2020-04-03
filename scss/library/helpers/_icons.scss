@@ -7,8 +7,16 @@
 
 // Used to apply icon glyphs through CSS
 @mixin icon($name) {
-    mask: url('~@/assets/icons/#{$name}.svg') no-repeat 50% 50%;
-    @include bg(contain);
+    @debug 'TRUE';
+    @debug index($icon-list, $name);
+
+    @if index($icon-list, $name) {
+        // @debug 'TRUE';/
+        mask: url('~@/assets/icons/#{$name}.svg') no-repeat 50% 50%;
+    } @else {
+        @warn errorMessage($name, 'tokens/_icons.scss');
+    }
+
     @include show-icon-guides;
     @include transition;
 }
@@ -47,5 +55,19 @@ $show-icon-guides: false;
             background-image: url('library-icon-guide.svg');
             z-index: $z-under;
         }
+    }
+}
+
+@mixin icon-size($size) {
+    $type: type-of($size);
+    @if $type == 'number' {
+        width: strip-units($size) * 1%;
+        @include ratio(1, 1);
+    }
+    @elseif map-has-key($icon-sizes, $size) {
+        width: map-get($icon-sizes, $size);
+        height: map-get($icon-sizes, $size);
+    } @else {
+        @warn errorMessage($size, 'tokens/_icons.scss');
     }
 }
