@@ -7,11 +7,19 @@ button.small .label {
   font-weight: 700;
   padding: 4px 8px; }
 
-button.medium .label, .cta .label {
+button.small .icon {
+  width: 24px;
+  height: 24px; }
+
+button.medium .label {
   font-family: "Montserrat", sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   padding: 8px 12px; }
+
+button.medium .icon {
+  width: 32px;
+  height: 32px; }
 
 button.large .label {
   font-family: "Montserrat", sans-serif;
@@ -19,10 +27,32 @@ button.large .label {
   font-weight: 700;
   padding: 12px 24px; }
 
+button.large .icon {
+  width: 48px;
+  height: 48px; }
+
+button.label-left {
+  text-align: left; }
+
+button.label-center {
+  text-align: center; }
+
+button.label-right {
+  text-align: right; }
+
+button.inline {
+  flex-shrink: 0;
+  width: auto; }
+
+button.block {
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 0; }
+
 button.primary {
   background: red; }
 
-button.secondary, .cta {
+button.secondary {
   background: blue; }
 
 button.tertiary {

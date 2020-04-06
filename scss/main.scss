@@ -12,7 +12,14 @@ button {
             @include button-size($size);
         }
     }
-}
-.cta {
-    @include button('secondary', 'medium');
+    @each $alignment in $button-alignments {
+        &.#{$alignment} {
+            @include button-alignment($alignment);
+        }
+    }
+    @each $layout in $button-layouts {
+        &.#{$layout} {
+            @include button-layout($layout);
+        }
+    }
 }

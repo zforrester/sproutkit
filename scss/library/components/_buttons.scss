@@ -36,8 +36,8 @@ $button-states: (
 
 $button-styles: ('primary', 'secondary', 'tertiary', 'link');
 $button-sizes: ('small', 'medium', 'large');
-$button-layout: ('block', 'inline');
-$button-allignmentt: ('label-left', 'label-center', 'label-right');
+$button-layouts: ('block', 'inline');
+$button-alignments: ('label-left', 'label-center', 'label-right');
 
 // Button Sizes
 //-------------------------------------------------------------------
@@ -47,11 +47,17 @@ $button-allignmentt: ('label-left', 'label-center', 'label-right');
         @include font($text, 'x-small', 'strong');
         padding: d(0.5) d(1);
     }
+    .icon {
+        @include icon-size('small');
+    }
 }
 %medium {
     .label {
         @include font($text, 'small', 'strong');
         padding: d(1) d(1.5);
+    }
+    .icon {
+        @include icon-size('medium');
     }
 }
 %large {
@@ -59,6 +65,36 @@ $button-allignmentt: ('label-left', 'label-center', 'label-right');
         @include font($text, 'large', 'strong');
         padding: d(1.5) d(3);
     }
+    .icon {
+        @include icon-size('large');
+    }
+}
+
+// Button Alignment
+//------------------------------------------------------------------
+
+%label-left {
+    text-align: left;
+}
+%label-center {
+    text-align: center;
+}
+%label-right {
+    text-align: right;
+}
+
+// Button Layout
+//------------------------------------------------------------------
+
+%inline {
+    flex-shrink: 0;
+    width: auto;
+}
+
+%block {
+    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
 }
 
 // Button Styles
@@ -96,7 +132,30 @@ $button-allignmentt: ('label-left', 'label-center', 'label-right');
     }
 }
 
-@mixin button($style: '', $size: '') {
+@mixin button-alignment($alignment) {
+    @if index($button-alignments, $alignment) {
+        @extend %#{$alignment};
+    } @else {
+        @warn errorMessage($alignment, 'components/_buttons.scss');
+    }
+}
+
+@mixin button-layout($layout) {
+    @if index($button-layouts, $layout) {
+        @extend %#{$layout};
+    } @else {
+        @warn errorMessage($layout, 'components/_buttons.scss');
+    }
+}
+
+@mixin button(
+    $style: 'primary',
+    $size: 'medium',
+    $alignment: 'center',
+    $layout: 'inline'
+) {
     @include button-style($style);
     @include button-size($size);
+    @include button-alignment($alignment);
+    @include button-layout($layout);
 }
