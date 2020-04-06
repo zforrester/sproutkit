@@ -4,6 +4,7 @@
 
 // Reset
 // -------------------------------------------------------------------
+
 @mixin button-reset {
     background: rgba(white, 0);
     border: 0 solid rgba(white, 0);
@@ -17,13 +18,14 @@
     text-decoration: none;
     cursor: pointer;
     outline: none;
-}
 
-button {
     span {
         display: block;
     }
 }
+
+// Options
+// -------------------------------------------------------------------
 
 $button-states: (
     'default',
@@ -42,120 +44,83 @@ $button-alignments: ('label-left', 'label-center', 'label-right');
 // Button Sizes
 //-------------------------------------------------------------------
 
-%small {
-    .label {
-        @include font($text, 'x-small', 'strong');
-        padding: d(0.5) d(1);
+%button {
+    &--small {
+        .label {
+            @include font($text, 'x-small', 'strong');
+            padding: d(0.5) d(1);
+        }
+        .icon {
+            @include icon-size('small');
+        }
     }
-    .icon {
-        @include icon-size('small');
+    &--medium {
+        .label {
+            @include font($text, 'small', 'strong');
+            padding: d(1) d(1.5);
+        }
+        .icon {
+            @include icon-size('medium');
+        }
     }
-}
-%medium {
-    .label {
-        @include font($text, 'small', 'strong');
-        padding: d(1) d(1.5);
-    }
-    .icon {
-        @include icon-size('medium');
-    }
-}
-%large {
-    .label {
-        @include font($text, 'large', 'strong');
-        padding: d(1.5) d(3);
-    }
-    .icon {
-        @include icon-size('large');
+    &--large {
+        .label {
+            @include font($text, 'large', 'strong');
+            padding: d(1.5) d(3);
+        }
+        .icon {
+            @include icon-size('large');
+        }
     }
 }
 
 // Button Alignment
 //------------------------------------------------------------------
 
-%label-left {
-    text-align: left;
-}
-%label-center {
-    text-align: center;
-}
-%label-right {
-    text-align: right;
+%button {
+    &--label-left {
+        text-align: left;
+    }
+    &--label-center {
+        text-align: center;
+    }
+    &--label-right {
+        text-align: right;
+    }
 }
 
 // Button Layout
 //------------------------------------------------------------------
 
-%inline {
-    flex-shrink: 0;
-    width: auto;
-}
+%button {
+    &--inline {
+        align-self: flex-start;
+        flex-shrink: 0;
+        width: auto;
+    }
 
-%block {
-    width: 100%;
-    flex-grow: 1;
-    flex-shrink: 0;
+    &--block {
+        width: 100%;
+        flex-grow: 1;
+        flex-shrink: 0;
+        align-self: stretch;
+    }
 }
 
 // Button Styles
 //-------------------------------------------------------------------
 
-%primary {
-    background: red;
-}
-%secondary {
-    background: blue;
-}
-%tertiary {
-    background: green;
-}
-%link {
-    color: blue;
-}
-
-// Button Functionss
-//-------------------------------------------------------------------
-
-@mixin button-style($style) {
-    @if index($button-styles, $style) {
-        @extend %#{$style};
-    } @else {
-        @warn errorMessage($style, 'components/_buttons.scss');
+%button {
+    &--primary {
+        background: red;
     }
-}
-
-@mixin button-size($size) {
-    @if index($button-sizes, $size) {
-        @extend %#{$size};
-    } @else {
-        @warn errorMessage($size, 'components/_buttons.scss');
+    &--secondary {
+        background: blue;
     }
-}
-
-@mixin button-alignment($alignment) {
-    @if index($button-alignments, $alignment) {
-        @extend %#{$alignment};
-    } @else {
-        @warn errorMessage($alignment, 'components/_buttons.scss');
+    &--tertiary {
+        background: green;
     }
-}
-
-@mixin button-layout($layout) {
-    @if index($button-layouts, $layout) {
-        @extend %#{$layout};
-    } @else {
-        @warn errorMessage($layout, 'components/_buttons.scss');
+    &--link {
+        color: blue;
     }
-}
-
-@mixin button(
-    $style: 'primary',
-    $size: 'medium',
-    $alignment: 'center',
-    $layout: 'inline'
-) {
-    @include button-style($style);
-    @include button-size($size);
-    @include button-alignment($alignment);
-    @include button-layout($layout);
 }

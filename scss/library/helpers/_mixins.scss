@@ -13,28 +13,8 @@
     }
 }
 
-// Share padding and margin values
-@mixin padding-x($value) {
-    padding-left: $value;
-    padding-right: $value;
-}
-
-@mixin padding-y($value) {
-    padding-top: $value;
-    padding-bottom: $value;
-}
-
-@mixin margin-x($value) {
-    margin-left: $value;
-    margin-right: $value;
-}
-
-@mixin margin-y($value) {
-    margin-top: $value;
-    margin-bottom: $value;
-}
-
-@mixin iphone-x-safe-area($edges...) {
+// https://webkit.org/blog/7929/designing-websites-for-iphone-x/
+@mixin safe-area-padding($edges...) {
     @if length($edges) > 0 {
         @each $edge in $edges {
             padding-#{$edge}: env(safe-area-inset-#{$edge});
@@ -109,17 +89,8 @@
     }
 }
 
-// Clear Fix
-@mixin clearfix {
-    &::after {
-        clear: both;
-        content: '';
-        display: table;
-    }
-}
-
 // Hide visually, still be present for screen readers
-@mixin visually-hidden {
+@mixin hide-text {
     position: absolute;
     left: -10000px;
     top: auto;
@@ -162,10 +133,36 @@
     }
 }
 
-@mixin truncate() {
-    white-space: nowrap;
-    overflow: hidden;
+// Text wrapping
+// -----------------------------------------------------------------------------
+
+// https://medium.com/@elad/trimming-multi-lines-in-css-5ae59d5e6d84
+@mixin truncate($line-clamp-length: 0) {
     text-overflow: ellipsis;
+    overflow: hidden;
+    min-width: 0;
+    max-width: 100%;
+
+    @if $line-clamp-length > 0 {
+        display: -webkit-box;
+        -webkit-line-clamp: $line-clamp-length;
+        -webkit-box-orient: vertical;
+    } @else {
+        white-space: nowrap;
+    }
+}
+
+// https://css-tricks.com/almanac/properties/h/hyphenate/
+// Requores "[lang]" attributeto be set on body
+@mixin hyphenate($value: auto) {
+    $values: (none, manual, auto, inherit, initial, unset);
+
+    @if indexOf($values, $value) {
+        -webkit-hyphens: $value;
+        -moz-hyphens: $value;
+        -ms-hyphens: $value;
+        hyphens: $value;
+    }
 }
 
 // Strip Units
@@ -254,4 +251,28 @@
 
 @function errorMessage($value, $file) {
     @return "The value '#{$value}' is not a valid option. See '#{$file}' for details";
+}
+
+@mixin debug() {
+    $levels: (red, purple, indigo, blue, teal, green, yellow, pink, orange);
+    outline: 1px solid rgba(nth($levels, 1), 0.25);
+    box-shadow: inset 0 0 0 4px rgba(nth($levels, 1), 0.1);
+
+    &:hover {
+        outline: 1px solid rgba(nth($levels, 1), 0.8);
+        box-shadow: inset 0 0 0 4px rgba(nth($levels, 1), 0.2);
+    }
+
+    @for $i from 1 through length($levels) {
+        $color: nth($levels, $i);
+        > :nth-child(#{$i - 1}) {
+            outline: 1px solid rgba($color, 0.25);
+            box-shadow: inset 0 0 0 4px rgba($color, 0.1);
+
+            &:hover {
+                outline: 1px solid rgba($color, 0.8);
+                box-shadow: inset 0 0 0 4px rgba($color, 0.2);
+            }
+        }
+    }
 }
