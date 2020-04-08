@@ -1,21 +1,17 @@
-import { Component, ComponentInterface, Host, h } from '@stencil/core'
+import { Component, ComponentInterface, h } from '@stencil/core'
 
 @Component({
     tag: 'fk-guide',
-    styleUrl: 'fk-guide.css',
+    styleUrl: 'fk-guide.scss',
     shadow: true,
 })
 export class FkGuide implements ComponentInterface {
     render() {
         return (
-            <Host>
-                <h1>HELLLOOO</h1>
-                <h1>HELLLOOO</h1>
-                <h1>HELLLOOO</h1>
-                <h1>HELLLOOO</h1>
+            <div class='guide'>
                 <h1>HELLLOOO</h1>
                 <slot></slot>
-            </Host>
+            </div>
         )
     }
 }
