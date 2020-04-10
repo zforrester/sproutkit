@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface FkGuide {
+    interface MyComp {
     }
     interface MyComponent {
         /**
@@ -24,11 +24,11 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLFkGuideElement extends Components.FkGuide, HTMLStencilElement {
+    interface HTMLMyCompElement extends Components.MyComp, HTMLStencilElement {
     }
-    var HTMLFkGuideElement: {
-        prototype: HTMLFkGuideElement;
-        new (): HTMLFkGuideElement;
+    var HTMLMyCompElement: {
+        prototype: HTMLMyCompElement;
+        new (): HTMLMyCompElement;
     };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
@@ -37,12 +37,12 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
-        "fk-guide": HTMLFkGuideElement;
+        "my-comp": HTMLMyCompElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
-    interface FkGuide {
+    interface MyComp {
     }
     interface MyComponent {
         /**
@@ -59,7 +59,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
-        "fk-guide": FkGuide;
+        "my-comp": MyComp;
         "my-component": MyComponent;
     }
 }
@@ -67,7 +67,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "fk-guide": LocalJSX.FkGuide & JSXBase.HTMLAttributes<HTMLFkGuideElement>;
+            "my-comp": LocalJSX.MyComp & JSXBase.HTMLAttributes<HTMLMyCompElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
