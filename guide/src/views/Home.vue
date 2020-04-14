@@ -1,18 +1,28 @@
 <template>
     <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png" />
-        <MyButton somethingelse="also" iconName="this" buttonLabel=" cool" />
+        <div class="content">
+            Content of site
+            <MDXDocument></MDXDocument>
+        </div>
+        <!-- <div class="modal">
+            <div class="overlay"></div>
+            <div class="dialogue">Window</div>
+        </div> -->
+        <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
+        <!-- <MyComponent /> -->
     </div>
 </template>
 
 <script>
 // @ is an alias to /sr
-import MyButton from '@/components/button/index.vue'
+// import component from '@/components/MyComponent/index.vue'
+import MDXDocument from './test.mdx'
 
 export default {
     name: 'Home',
     components: {
-        MyButton,
+        MDXDocument,
+        // MyComponent,
     },
 }
 </script>

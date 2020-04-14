@@ -17,6 +17,16 @@ module.exports = {
             addStyleResource(config.module.rule('scss').oneOf(type))
         )
     },
+    configureWebpack: {
+        module: {
+            rules: [
+                {
+                    test: /.mdx?$/,
+                    use: ['babel-loader', '@mdx-js/vue-loader'],
+                },
+            ],
+        },
+    },
 }
 
 function addStyleResource(rule) {

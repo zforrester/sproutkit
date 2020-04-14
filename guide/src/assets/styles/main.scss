@@ -1,1 +1,35 @@
 @import '../../../../scss/library/_library';
+
+.modal {
+    // background: pink;
+    @include debug;
+    position: fixed;
+    @include coordinates;
+    height: 100vh;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+}
+
+.overlay {
+    position: fixed;
+    @include coordinates;
+    height: 100vh;
+    background: color('gray', '800', 0.5);
+}
+
+.dialogue {
+    background: color('white');
+    position: fixed;
+    width: 50%;
+    padding: d(3);
+    border-radius: 50px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.content {
+    min-height: 500vh;
+    @include debug;
+}
