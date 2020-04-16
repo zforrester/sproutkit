@@ -1,6 +1,6 @@
 <template lang="html">
     <ul>
-        <p>{{ sectionList }}</p>
+        <p>Sections: {{ sectionList }}</p>
         <li v-for="item in sectionList" :key="item.id">
             <span>{{ item.name }}</span>
         </li>
