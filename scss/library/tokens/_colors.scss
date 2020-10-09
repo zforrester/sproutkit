@@ -1,0 +1,46 @@
+// Pallete
+// -------------------------------------------------------------------
+$colors: (
+    'white': #fff,
+    'black': #000,
+    'gray': (
+        '100': hsl(220, 10, 98),
+        '200': hsl(220, 15, 90),
+        '300': hsl(220, 20, 85),
+        '400': hsl(220, 20, 70),
+        '500': hsl(220, 20, 50),
+        '600': hsl(220, 20, 40),
+        '700': hsl(200, 20, 35),
+        '800': hsl(220, 20, 20),
+        '900': hsl(220, 20, 10),
+    ),
+    'utility': (
+        'error': #d8250e,
+        'success': #79cf17,
+        'warn': #fda832,
+        'attention': #6e14e7,
+    ),
+    'blue': #0094ff,
+    'purple': #2714ff,
+);
+
+// Font Colours
+// -------------------------------------------------------------------
+$font-colors: (
+    'purple': #2714ff,
+    'dark': (
+        'strong': color('gray', '900'),
+        'supporting': color('gray', '700'),
+        'auxiliary': color('gray', '600'),
+    ),
+    'light': (
+        'strong': color('gray', '100'),
+        'supporting': color('gray', '300', 0.8),
+        'auxiliary': color('gray', '400'),
+    ),
+    'blue': (
+        'strong': color('blue'),
+        'supporting': lighten(color('blue', 0.8), 10%),
+        'auxiliary': lighten(color('blue', 0.7), 20%),
+    ),
+);

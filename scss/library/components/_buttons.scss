@@ -1,0 +1,78 @@
+//-------------------------------------------------------------------
+// Buttons
+// -------------------------------------------------------------------
+
+$button-styles: ('primary', 'secondary', 'tertiary', 'link');
+$button-sizes: ('small', 'medium', 'large');
+$button-alignments: ('label-left', 'label-center', 'label-right');
+
+// Button Sizes
+//-------------------------------------------------------------------
+
+@mixin button-size($size) {
+    @if ($size == 'small') {
+        .label {
+            @include font('primary', 'small', 'medium');
+            padding: d(0.5) d(1);
+        }
+        .icon {
+            @include icon-size('small');
+        }
+    }
+    @if ($size == 'medium') {
+        .label {
+            @include font('primary', 'medium', 'medium');
+            padding: d(1) d(1.5);
+        }
+        .icon {
+            @include icon-size('medium');
+        }
+    }
+    @if ($size == 'large') {
+        .label {
+            @include font('primary', 'large', 'medium');
+            padding: d(1.5) d(3);
+        }
+        .icon {
+            @include icon-size('large');
+        }
+    }
+}
+
+// Button Alignment
+//------------------------------------------------------------------
+
+@mixin button-alignment($alignment) {
+    @if ($alignment == 'label-left') {
+        text-align: left;
+    }
+    @if ($alignment == 'label-center') {
+        text-align: center;
+    }
+    @if ($alignment == 'label-right') {
+        text-align: right;
+    }
+}
+
+// Button Styles
+//-------------------------------------------------------------------
+
+@mixin button-style($style) {
+    @if ($style == 'primary') {
+        @include button-primary;
+    }
+    @if ($style == 'secondary') {
+        @include button-secondary;
+    }
+    @if ($style == 'tertiary') {
+        @include button-tertiary;
+    }
+}
+
+@mixin button-primary() {
+    background: green;
+
+    &:hover {
+        background: rgba(green, 0.2);
+    }
+}
