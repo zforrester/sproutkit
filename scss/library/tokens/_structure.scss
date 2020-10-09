@@ -39,9 +39,9 @@ $z-indexes: (
 //-------------------------------------------------------------------
 
 $lines: (
-    'light': 1px solid gray(light, 0.4),
-    'dark': 1px solid gray(x-dark, 0.5),
-    'normal': 1px solid gray(medium, 0.3),
+    'light': thin solid gray(light, 0.4),
+    'dark': thin solid gray(x-dark, 0.5),
+    'normal': thin solid gray(medium, 0.3),
 );
 
 // Border Radius

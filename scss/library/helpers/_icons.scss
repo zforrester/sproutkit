@@ -17,7 +17,7 @@
     @include transition;
 }
 
-// Used for poitioning inline SVG icons
+// Used for positioning inline SVG icons
 @mixin icon-inline {
     @include show-icon-guides;
     position: relative;

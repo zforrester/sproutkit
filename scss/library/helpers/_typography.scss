@@ -1,6 +1,16 @@
 //-------------------------------------------------------------------
 // Typography Helper Functions
 //-------------------------------------------------------------------
+@function font-family($family) {
+    @if map-has-key($font-families, $family) {
+        $family: map-get($font-families, $family);
+        @return $family;
+    } @else {
+        @warn errorMessage($family, 'tokens/_typography.scss');
+        @return null;
+    }
+}
+
 @function font-size($size) {
     @if map-has-key($font-sizes, $size) {
         $size: map-get($font-sizes, $size);
@@ -30,41 +40,14 @@
     }
 }
 
-// Font Styles
-//-------------------------------------------------------------------
-@mixin strong() {
-    @extend %strong !optional;
-}
-// Find the style from the library and print out its properties
-@mixin font($library, $style: 'default', $weight: 'regular') {
-    $default-style: map-get($library, default);
-    $style: map-get($library, $style);
-
-    @each $key, $value in $default-style {
-        @if $key == $weight {
-            font-weight: $value;
-        }
-
-        @if $key != 'regular' {
-            @if $key != 'strong' {
-                #{$key}: $value;
-            }
-        }
+@mixin font($family: '', $size: '', $weight: '') {
+    @if ($family) {
+        font-family: font-family($family);
     }
-
-    @each $key, $value in $style {
-        @if $key == $weight {
-            font-weight: $value;
-        }
-
-        @if $key != 'regular' {
-            @if $key != 'strong' {
-                #{$key}: $value;
-            }
-        }
+    @if ($size) {
+        font-size: font-size($size);
     }
-
-    %strong {
-        font-weight: map-get($style, 'strong');
+    @if ($weight) {
+        font-weight: font-weight($weight);
     }
 }

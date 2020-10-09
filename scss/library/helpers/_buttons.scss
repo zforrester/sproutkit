@@ -1,46 +1,32 @@
-// Button Functionss
+// Button Functions
 //-------------------------------------------------------------------
 
-@mixin button(
-    $style: 'primary',
-    $size: 'medium',
-    $alignment: 'center',
-    $layout: 'inline'
-) {
-    @include button-style($style);
-    @include button-size($size);
-    @include button-alignment($alignment);
-    @include button-layout($layout);
+@mixin button($style: 'primary', $size: 'medium', $alignment: 'label-center') {
+    @include get-button-style($style);
+    @include get-button-size($size);
+    @include get-button-alignment($alignment);
 }
 
-@mixin button-style($style) {
+@mixin get-button-style($style) {
     @if index($button-styles, $style) {
-        @extend %button--#{$style};
+        @include button-style($style);
     } @else {
         @warn errorMessage($style, 'components/_buttons.scss');
     }
 }
 
-@mixin button-size($size) {
+@mixin get-button-size($size) {
     @if index($button-sizes, $size) {
-        @extend %button--#{$size};
+        @include button-size($size);
     } @else {
         @warn errorMessage($size, 'components/_buttons.scss');
     }
 }
 
-@mixin button-alignment($alignment) {
+@mixin get-button-alignment($alignment) {
     @if index($button-alignments, $alignment) {
-        @extend %button--#{$alignment};
+        @include button-alignment($alignment);
     } @else {
         @warn errorMessage($alignment, 'components/_buttons.scss');
-    }
-}
-
-@mixin button-layout($layout) {
-    @if index($button-layouts, $layout) {
-        @extend %button--#{$layout};
-    } @else {
-        @warn errorMessage($layout, 'components/_buttons.scss');
     }
 }

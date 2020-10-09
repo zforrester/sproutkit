@@ -25,17 +25,3 @@
 @import 'components/_input-text';
 @import 'components/_input-checkbox';
 @import 'components/_input-radio';
-
-h1 {
-    max-width: 50%;
-    // outline: 1px solid red;
-    @include hyphenate();
-}
-
-// body {
-//     @include debug();
-// }
-
-div {
-    @include debug();
-}

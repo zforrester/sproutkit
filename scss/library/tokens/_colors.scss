@@ -27,6 +27,7 @@ $colors: (
 // Font Colours
 // -------------------------------------------------------------------
 $font-colors: (
+    'purple': #2714ff,
     'dark': (
         'strong': color('gray', '900'),
         'supporting': color('gray', '700'),
@@ -36,5 +37,10 @@ $font-colors: (
         'strong': color('gray', '100'),
         'supporting': color('gray', '300', 0.8),
         'auxiliary': color('gray', '400'),
+    ),
+    'blue': (
+        'strong': color('blue'),
+        'supporting': lighten(color('blue', 0.8), 10%),
+        'auxiliary': lighten(color('blue', 0.7), 20%),
     ),
 );

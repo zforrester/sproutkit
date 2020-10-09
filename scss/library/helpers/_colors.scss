@@ -43,3 +43,7 @@
     @warn errorMessage($shade, 'tokens/_colors.scss');
     @return null;
 }
+
+@mixin font-color($shade, $strength: 'strong') {
+    color: font-color($shade, $strength);
+}
