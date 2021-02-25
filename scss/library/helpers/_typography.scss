@@ -6,7 +6,7 @@
         $family: map-get($font-families, $family);
         @return $family;
     } @else {
-        @warn errorMessage($family, 'tokens/_typography.scss');
+        @warn errorMessage($family, $font-families, 'tokens/_typography.scss');
         @return null;
     }
 }
@@ -16,7 +16,7 @@
         $size: map-get($font-sizes, $size);
         @return rem($size);
     } @else {
-        @warn errorMessage($size, 'tokens/_typography.scss');
+        @warn errorMessage($size, $font-sizes, 'tokens/_typography.scss');
         @return null;
     }
 }
@@ -25,7 +25,7 @@
     @if map-has-key($font-weights, $weight) {
         @return map-get($font-weights, $weight);
     } @else {
-        @warn errorMessage($weight, 'tokens/_typography.scss');
+        @warn errorMessage($weight, $font-weights, 'tokens/_typography.scss');
         @return null;
     }
 }
@@ -35,7 +35,7 @@
         $height: map-get($line-heights, $height);
         @return $height;
     } @else {
-        @warn errorMessage($height, 'tokens/_typography.scss');
+        @warn errorMessage($height, $line-heights, 'tokens/_typography.scss');
         @return null;
     }
 }

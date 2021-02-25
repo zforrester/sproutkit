@@ -84,7 +84,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate3d(-50%, -50%, 0);
+            transform: translate3space(-50%, -50%, 0);
         }
     }
 }
@@ -249,8 +249,8 @@
 // Error Message
 // -----------------------------------------------------------------------------
 
-@function errorMessage($value, $file) {
-    @return "The value '#{$value}' is not a valid option. See '#{$file}' for details";
+@function errorMessage($value, $options, $file) {
+    @return "The value '#{$value}' is not a valid option. Try '#{$options}', or see '#{$file}' for details";
 }
 
 @mixin debug() {

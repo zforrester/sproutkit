@@ -2,54 +2,59 @@
 // Buttons
 // -------------------------------------------------------------------
 
-$button-styles: ('primary', 'secondary', 'tertiary', 'link');
+$button-styles: ('primary', 'secondary', 'tertiary');
 $button-sizes: ('small', 'medium', 'large');
-$button-alignments: ('label-left', 'label-center', 'label-right');
+$button-layouts: ('label-left', 'label-center', 'label-right');
 
 // Button Sizes
 //-------------------------------------------------------------------
 
 @mixin button-size($size) {
-    @if ($size == 'small') {
-        .label {
+    .label {
+        @if ($size == 'small') {
             @include font('primary', 'small', 'medium');
-            padding: d(0.5) d(1);
+            padding: space(0.5) space(1);
         }
-        .icon {
-            @include icon-size('small');
-        }
-    }
-    @if ($size == 'medium') {
-        .label {
+        @if ($size == 'medium') {
             @include font('primary', 'medium', 'medium');
-            padding: d(1) d(1.5);
+            padding: space(1) space(1.5);
         }
-        .icon {
-            @include icon-size('medium');
-        }
-    }
-    @if ($size == 'large') {
-        .label {
+        @if ($size == 'large') {
             @include font('primary', 'large', 'medium');
-            padding: d(1.5) d(3);
-        }
-        .icon {
-            @include icon-size('large');
+            padding: space(1.5) space(3);
         }
     }
 }
 
-// Button Alignment
+@mixin button-icon($icon-name, $size) {
+    .icon {
+        @include icon($icon-name);
+        @include icon-size($size);
+    
+        @if ($size == 'small') {
+            margin: 0 space(.5);
+        }
+        @if ($size == 'medium') {
+            margin: 0 space(1);
+        }
+        @if ($size == 'large') {
+            margin: 0 space(1.5);
+        }
+    }
+}
+
+
+// Button Layout
 //------------------------------------------------------------------
 
-@mixin button-alignment($alignment) {
-    @if ($alignment == 'label-left') {
+@mixin button-layout($layout) {
+    @if ($layout == 'label-left') {
         text-align: left;
     }
-    @if ($alignment == 'label-center') {
+    @if ($layout == 'label-center') {
         text-align: center;
     }
-    @if ($alignment == 'label-right') {
+    @if ($layout == 'label-right') {
         text-align: right;
     }
 }
@@ -58,6 +63,12 @@ $button-alignments: ('label-left', 'label-center', 'label-right');
 //-------------------------------------------------------------------
 
 @mixin button-style($style) {
+    // Default styles
+    display: flex;
+    flex-wrap: nowrap;
+    min-width: 0;
+    text-decoration: none;
+
     @if ($style == 'primary') {
         @include button-primary;
     }
@@ -75,4 +86,18 @@ $button-alignments: ('label-left', 'label-center', 'label-right');
     &:hover {
         background: rgba(green, 0.2);
     }
+
+    &:active { 
+        // Styles 
+    }
+
+    &:focus { 
+        // Styles 
+    }
+
+    &:disabled { 
+        // Styles 
+    }
 }
+
+

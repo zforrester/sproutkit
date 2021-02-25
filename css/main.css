@@ -1,0 +1,18 @@
+.button {
+  text-align: left; }
+  .button .label {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 12px; }
+  .button .icon {
+    mask: url("~@/assets/icons/plus.svg") no-repeat 50% 50%;
+    will-change: all;
+    transition: 0.3s cubic-bezier(0.3, 0.9, 0.4, 0.98);
+    transition-property: all;
+    width: 32px;
+    height: 32px;
+    margin: 0 8px; }
+    @media (prefers-reduced-motion: reduce) {
+      .button .icon {
+        transition-duration: 0; } }

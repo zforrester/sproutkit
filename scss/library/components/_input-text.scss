@@ -38,20 +38,20 @@ $input-states: (
     flex-direction: column;
 
     label {
-        margin: d(0.5);
+        margin: space(0.5);
         @include font($text, 'small');
     }
 
     input {
         font-size: 16px;
-        padding: d(0.5);
+        padding: space(0.5);
         @include mq(screen-size('small')) {
             @include font($text, 'medium');
         }
     }
 
     .message {
-        margin: d(0.5);
+        margin: space(0.5);
         @include font($text, 'x-small');
     }
 

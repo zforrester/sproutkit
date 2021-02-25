@@ -24,7 +24,7 @@ $speeds: (
         $speed: map-get($speeds, $speed);
         @return $speed;
     }
-    @warn errorMessage($speed, 'tokens/_motion.scss');
+    @warn errorMessage($speed, $speeds,'tokens/_motion.scss');
     @return null;
 }
 

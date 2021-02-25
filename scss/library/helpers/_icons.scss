@@ -10,7 +10,7 @@
     @if index($icon-list, $name) {
         mask: url('~@/assets/icons/#{$name}.svg') no-repeat 50% 50%;
     } @else {
-        @warn errorMessage($name, 'tokens/_icons.scss');
+        @warn errorMessage($name, $icon-list, 'tokens/_icons.scss');
     }
 
     @include show-icon-guides;
@@ -64,6 +64,6 @@ $show-icon-guides: false;
         width: map-get($icon-sizes, $size);
         height: map-get($icon-sizes, $size);
     } @else {
-        @warn errorMessage($size, 'tokens/_icons.scss');
+        @warn errorMessage($size, $icon-sizes, 'tokens/_icons.scss');
     }
 }

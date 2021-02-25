@@ -2,7 +2,7 @@
 //-------------------------------------------------------------------
 // D stands for Dimension
 
-@function d($scale) {
+@function space($scale) {
     $d-base: 8px;
     @return $d-base * $scale;
 }
@@ -14,7 +14,7 @@
         $size: map-get($screen-sizes, $size);
         @return $size;
     }
-    @warn errorMessage($size, 'tokens/_structure.scss');
+    @warn errorMessage($size, $screen-sizes, 'tokens/_structure.scss');
     @return null;
 }
 
@@ -25,7 +25,7 @@
         $index: map-get($z-indexes, $index);
         @return $index;
     }
-    @warn errorMessage($index, 'tokens/_structure.scss');
+    @warn errorMessage($index, $z-indexes,'tokens/_structure.scss');
     @return null;
 }
 
@@ -37,7 +37,7 @@
         $style: map-get($lines, $style);
         @return $style;
     }
-    @warn errorMessage($style, 'tokens/_structure.scss');
+    @warn errorMessage($style, $lines, 'tokens/_structure.scss');
     @return null;
 }
 
@@ -49,6 +49,6 @@
         $size: map-get($radii, $size);
         @return $size;
     }
-    @warn errorMessage($size, 'tokens/_structure.scss');
+    @warn errorMessage($size, $radii, 'tokens/_structure.scss');
     @return null;
 }

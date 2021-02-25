@@ -1,17 +1,20 @@
 // Button Functions
 //-------------------------------------------------------------------
 
-@mixin button($style: 'primary', $size: 'medium', $alignment: 'label-center') {
-    @include get-button-style($style);
-    @include get-button-size($size);
-    @include get-button-alignment($alignment);
+@mixin button(
+    $style: 'primary', 
+    $size: 'medium', 
+    $layout: 'label-center') {
+        @include get-button-style($style);
+        @include get-button-size($size);
+        @include get-button-layout($layout);
 }
 
 @mixin get-button-style($style) {
     @if index($button-styles, $style) {
         @include button-style($style);
     } @else {
-        @warn errorMessage($style, 'components/_buttons.scss');
+        @warn errorMessage($style, $button-styles, 'components/_buttons.scss');
     }
 }
 
@@ -19,14 +22,14 @@
     @if index($button-sizes, $size) {
         @include button-size($size);
     } @else {
-        @warn errorMessage($size, 'components/_buttons.scss');
+        @warn errorMessage($size, $button-sizes, 'components/_buttons.scss');
     }
 }
 
-@mixin get-button-alignment($alignment) {
-    @if index($button-alignments, $alignment) {
-        @include button-alignment($alignment);
+@mixin get-button-layout($layout) {
+    @if index($button-layouts, $layout) {
+        @include button-layout($layout);
     } @else {
-        @warn errorMessage($alignment, 'components/_buttons.scss');
+        @warn errorMessage($layout, $button-layouts, 'components/_buttons.scss');
     }
 }

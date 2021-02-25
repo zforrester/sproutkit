@@ -38,7 +38,7 @@ $radio-states: (
     align-items: baseline;
 
     label {
-        margin: d(0.5);
+        margin: space(0.5);
         @include font($text, 'small');
     }
 
@@ -47,7 +47,7 @@ $radio-states: (
     }
 
     .message {
-        margin: d(0.5);
+        margin: space(0.5);
         @include font($text, 'x-small');
     }
 }
