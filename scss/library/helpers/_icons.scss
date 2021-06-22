@@ -8,6 +8,7 @@
 // Used to apply icon glyphs through CSS
 @mixin icon($name) {
     @if index($icon-list, $name) {
+        -webkit-mask: url('~@/assets/icons/#{$name}.svg') no-repeat 50% 50%;
         mask: url('~@/assets/icons/#{$name}.svg') no-repeat 50% 50%;
     } @else {
         @warn errorMessage($name, $icon-list, 'tokens/_icons.scss');
@@ -60,7 +61,7 @@ $show-icon-guides: false;
         width: strip-units($size) * 1%;
         @include ratio(1, 1);
     }
-    @elseif map-has-key($icon-sizes, $size) {
+    @else if map-has-key($icon-sizes, $size) {
         width: map-get($icon-sizes, $size);
         height: map-get($icon-sizes, $size);
     } @else {

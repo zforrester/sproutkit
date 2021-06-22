@@ -8,40 +8,26 @@
 $screen-sizes: (
     'xxx-large': rem(1900px),
     'xx-large': rem(1640px),
-    'x-large': rem(1366px),
+    'x-large': rem(1440px),
     'large': rem(1280px),
     //,
-    'medium-large': rem(975px),
+    'medium-large': rem(1024px),
     'medium': rem(768px),
     'medium-small': rem(640px),
     //,
     'small': rem(520px),
     'x-small': rem(375px),
     'xx-small': rem(360px),
-    'xxx-small': rem(320px),
-);
-
-// Z-Index Scale
-//-------------------------------------------------------------------
-
-$z-indexes: (
-    'under': -1,
-    '0': 0,
-    '1': 1,
-    '2': 10,
-    '3': 100,
-    '4': 1000,
-    '5': 10000,
-    '6': 100000,
+    'xxx-small': rem(280px),
 );
 
 // Lines
 //-------------------------------------------------------------------
 
 $lines: (
-    'light': thin solid gray(light, 0.4),
-    'dark': thin solid gray(x-dark, 0.5),
-    'normal': thin solid gray(medium, 0.3),
+    'light': thin solid color('gray-800', 0.4),
+    'dark': thin solid color('gray-800', 0.5),
+    'normal': thin solid color('gray-800', 0.3),
 );
 
 // Border Radius
@@ -55,3 +41,15 @@ $radii: (
     'x-small': 4px,
     'xx-small': 2px,
 );
+
+$shadow-color: color('gray-900', .2);
+
+$shadows: (
+    1: 0 1px 2px 0 $shadow-color,
+    2: 0 2px 4px 0 $shadow-color,
+    3: 0 4px 8px 0 $shadow-color,
+    4: 0 8px 16px 0 $shadow-color,
+    5: 0 16px 32px 0 $shadow-color,
+    6: 0 24px 40px -8px $shadow-color,
+)
+

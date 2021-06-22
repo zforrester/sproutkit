@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "scss": "node-sass --watch **/*.scss -o css"
+        "scss": "sass --watch scss:css"
     },
     "repository": {
         "type": "git",
@@ -28,8 +28,5 @@
     "bugs": {
         "url": "https://github.com/zforrester/fissionkit/issues"
     },
-    "homepage": "https://github.com/zforrester/fissionkit#readme",
-    "devDependencies": {
-        "node-sass": "^4.13.1"
-    }
+    "homepage": "https://github.com/zforrester/fissionkit#readme"
 }

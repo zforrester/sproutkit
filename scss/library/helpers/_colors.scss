@@ -8,9 +8,9 @@
         $type: type-of($color);
         @if $type == 'map' {
             @if map-has-key(map-get($colors, $pallete), $shade) {
-                $color: map-deep-get($colors, $pallete, $shade);
+    $color: map-deep-get($colors, $pallete, $shade);
             } @else {
-                @warn errorMessage($shade, $colors, 'tokens/_colors.scss');
+                // @warn errorMessage($shade, $colors, 'tokens/_colors.scss');
                 @return null;
             }
         } @else {
@@ -20,6 +20,7 @@
         @return rgba($color, $alpha);
     }
 
+    // @debug $pallete;
     @warn errorMessage($pallete, $colors, 'tokens/_colors.scss');
     @return null;
 }

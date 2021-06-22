@@ -1,6 +1,47 @@
 @import 'library/_library';
 
 .button {
-    @include button('first', 'medium', 'label-left') ;
-    @include button-icon('plus', 'medium');
+    z-index: z(3);
+    // border: line('green');
+    // box-shadow: shadow(2, 0);
+    .higher-button {
+        z-index: z(3, 10);
+        // box-shadow: shadow(1, 0, 8, color('gray-900', .05));
+    }
+}
+
+[class^=box] {
+    width: calc(15% - 8px);
+    border-radius: radius('large');
+    @include ratio(4,3);
+    margin: 8px;
+    display: inline-flex;
+}
+
+// .box1 {
+//     box-shadow: shadow(10, 0, 1, color('gray-900', .05));
+// }
+
+// .box2 {
+//     box-shadow: shadow(10, 0, 2, color('gray-900', .05));
+// }
+
+// .box3 {
+//     box-shadow: shadow(10, 0, 3, color('gray-900', .05));
+// }
+
+// .box4 {
+//     box-shadow: shadow(10, 0, 4, color('gray-900', .05));
+// }
+
+// .box5 {
+//     box-shadow: shadow(10, 0, 5, color('gray-900', .1));
+// }
+
+
+
+
+
+.box6 {
+    box-shadow: shadow(6);
 }

@@ -1,18 +1,25 @@
 .button {
-  text-align: left; }
-  .button .label {
-    font-family: "Montserrat", sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    padding: 8px 12px; }
-  .button .icon {
-    mask: url("~@/assets/icons/plus.svg") no-repeat 50% 50%;
-    will-change: all;
-    transition: 0.3s cubic-bezier(0.3, 0.9, 0.4, 0.98);
-    transition-property: all;
-    width: 32px;
-    height: 32px;
-    margin: 0 8px; }
-    @media (prefers-reduced-motion: reduce) {
-      .button .icon {
-        transition-duration: 0; } }
+  z-index: "1000";
+}
+.button .higher-button {
+  z-index: 1010;
+}
+
+[class^=box] {
+  width: calc(15% - 8px);
+  border-radius: 10px;
+  position: relative;
+  margin: 8px;
+  display: inline-flex;
+}
+[class^=box]::before {
+  content: "";
+  display: block;
+  padding-top: 75%;
+}
+
+.box6 {
+  box-shadow: 0 24px 40px -8px rgba(20, 24, 31, 0.2);
+}
+
+/*# sourceMappingURL=main.css.map */
