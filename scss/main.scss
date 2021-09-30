@@ -1,7 +1,17 @@
 @import 'sproutkit/_source';
 
 .box {
-    background: red;
-    width: calc(15% - 8px);
-    @include aspect-ratio(127px, 48px);
+    background: color('green');
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+    // @include aspect-ratio(127px, 48px);
+    @include transition([width, height]);
+    @include transition(background-color);
+    @include transition();
+
+    &:hover {
+        width: 800px;
+        background-color: red;
+    }
 }

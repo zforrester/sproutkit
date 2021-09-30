@@ -2,25 +2,25 @@
 // Color Helper Functions
 //-------------------------------------------------------------------
 
-@function color($pallete, $shade: 1, $alpha: 1) {
-    @if map-has-key($colors, $pallete) {
-        $color: map-get($colors, $pallete);
+@function color($palette, $shade: 1, $alpha: 1) {
+    @if map-has-key($colors, $palette) {
+        $color: map-get($colors, $palette);
         $type: type-of($color);
         @if $type == 'map' {
-            @if map-has-key(map-get($colors, $pallete), $shade) {
-    $color: map-deep-get($colors, $pallete, $shade);
+            @if map-has-key(map-get($colors, $palette), $shade) {
+                $color: map-deep-get($colors, $palette, $shade);
             } @else {
                 // @warn errorMessage($shade, $colors, 'tokens/_colors.scss');
                 @return null;
             }
         } @else {
             $alpha: $shade;
-            $color: map-get($colors, $pallete);
+            $color: map-get($colors, $palette);
         }
         @return rgba($color, $alpha);
     }
 
-    // @debug $pallete;
-    @warn errorMessage($pallete, $colors, 'tokens/_colors.scss');
+    // @debug $palette;
+    @warn errorMessage($palette, $colors, 'tokens/_colors.scss');
     @return null;
 }

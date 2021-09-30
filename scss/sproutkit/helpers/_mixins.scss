@@ -250,15 +250,18 @@
 @function errorMessage($value, $options: '', $file) {
     $valid-options: map-keys($options);
 
-    @debug &;
+    @warn & contains an invalid property #{$value};
     @debug '-----------------------';
     @debug Valid options are below;
     @debug '-----------------------';
     @each $option in $options {
         @debug $option;
     }
-    @return 'The value #{$value} is not a valid option. Try #{$valid-options}. See #{$file} for details';
+    @return 'See #{$file} for details';
 }
+
+// Debug boxes
+// -----------------------------------------------------------------------------
 
 @mixin debug() {
     $levels: (red, purple, indigo, blue, teal, green, yellow, pink, orange);

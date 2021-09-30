@@ -1,21 +1,29 @@
 .box {
-  background: red;
-  width: calc(15% - 8px);
+  height: 50px;
+  width: 50px;
+  background-color: blue;
+  transition: width 0.3s cubic-bezier(0.3, 0.9, 0.4, 0.98), height 0.3s cubic-bezier(0.3, 0.9, 0.4, 0.98);
+  transition: background-color 0.3s cubic-bezier(0.3, 0.9, 0.4, 0.98);
+  transition: all 0.3s cubic-bezier(0.3, 0.9, 0.4, 0.98);
 }
-@supports not (aspect-ratio: 0) {
+@media (prefers-reduced-motion: reduce) {
   .box {
-    position: relative;
-  }
-  .box::before {
-    content: "";
-    display: block;
-    padding-top: 37.7952755906%;
+    transition-duration: 0;
   }
 }
-@supports (aspect-ratio: 0) {
+@media (prefers-reduced-motion: reduce) {
   .box {
-    aspect-ratio: 127/48;
+    transition-duration: 0;
   }
+}
+@media (prefers-reduced-motion: reduce) {
+  .box {
+    transition-duration: 0;
+  }
+}
+.box:hover {
+  width: 800px;
+  background-color: red;
 }
 
 /*# sourceMappingURL=main.css.map */

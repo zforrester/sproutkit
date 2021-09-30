@@ -28,22 +28,29 @@ $speeds: (
     @return null;
 }
 
-@mixin transition($speed: 'fast', $properties...) {
-    @if length($properties) < 1 {
-        $properties: all;
+@mixin transition($properties: all, $speed: 'fast') {
+    @if length($properties) > 1 {
+        $property-list: ();
+
+        @each $property in $properties {
+            $property-list: append(
+                $property-list,
+                $property transitionSpeed($speed),
+                $separator: comma
+            );
+        }
+        transition: $property-list;
+    } @else {
+        transition: $properties transitionSpeed($speed);
     }
-    will-change: $properties;
-    transition: transitionSpeed($speed);
-    transition-property: $properties;
 
     @media (prefers-reduced-motion: reduce) {
         transition-duration: 0;
     }
 }
 
-@mixin animate($style, $speed: '', $properties...) {
-    $speed: transitionSpeed('fast');
-    animation: $style $speed $properties;
+@mixin animate($animation, $speed: 'fast', $properties...) {
+    animation: $animation transitionSpeed($speed) $properties;
     @media (prefers-reduced-motion: reduce) {
         animation-duration: 0;
     }

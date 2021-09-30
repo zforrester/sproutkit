@@ -17,7 +17,10 @@
     @include show-focal-point-guides($pos-x, $pos-y, $show-focal-point-guides);
 }
 
-@mixin inline-image(
+// If you'd like an img element to behave similar to a background image
+// -------------------------------------------------------------------
+
+@mixin bg-img(
     $scale: cover,
     $pos-x: center,
     $pos-y: center,
@@ -38,7 +41,7 @@
 // -------------------------------------------------------------------
 // Allows you test the focal point of an image
 
-// Set to True to pinpoint center scaling point of an image
+// Set to True to pinpoint centre scaling point of an image
 $show-focal-point-guides: false;
 
 @mixin show-focal-point-guides($pos-x, $pos-y, $show-focal-point-guides) {
