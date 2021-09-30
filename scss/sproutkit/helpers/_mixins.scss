@@ -1,20 +1,28 @@
+@use 'sass:math';
+
 // Layout
 // -----------------------------------------------------------------------------
 
-// Maintain a porportionate width/height ratio
-@mixin ratio($width, $height) {
-    position: relative;
+// Maintain a proportionate width/height ratio
+@mixin aspect-ratio($width, $height) {
+    @supports not (aspect-ratio: 0) {
+        position: relative;
 
-    &::before {
-        content: '';
-        display: block;
-        padding-top: #{($height / $width) * 100%};
-        @content;
+        &::before {
+            content: '';
+            display: block;
+            padding-top: #{math.div($height, $width) * 100%};
+            @content;
+        }
+    }
+
+    @supports (aspect-ratio: 0) {
+        aspect-ratio: #{strip-units($width)} / #{strip-units($height)};
     }
 }
 
 // https://webkit.org/blog/7929/designing-websites-for-iphone-x/
-@mixin safe-area-padding($edges...) {
+@mixin env-safe-area-padding($edges...) {
     @if length($edges) > 0 {
         @each $edge in $edges {
             padding-#{$edge}: env(safe-area-inset-#{$edge});
@@ -46,14 +54,19 @@
     @include coordinates($coordinates...);
 }
 
+// Quick Fixed Positioning
+@mixin fixed($coordinates...) {
+    position: fixed;
+    @include coordinates($coordinates...);
+}
+
 @mixin coordinates($offset: null, $right: null, $bottom: null, $left: null) {
     @if $right {
         top: $offset;
         left: $left;
         right: $right;
         bottom: $bottom;
-    }
-    @else if $offset {
+    } @else if $offset {
         top: $offset;
         left: $offset;
         right: $offset;
@@ -66,31 +79,8 @@
     }
 }
 
-@mixin center-child($method: 'flex') {
-    @if $method == 'flex' {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        * > {
-            margin: auto;
-        }
-    }
-
-    @if $method == 'absolute' {
-        position: relative;
-
-        > * {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate3space(-50%, -50%, 0);
-        }
-    }
-}
-
 // Hide visually, still be present for screen readers
-@mixin hide-text {
+@mixin hide-content {
     position: absolute;
     left: -10000px;
     top: auto;
@@ -153,7 +143,7 @@
 }
 
 // https://css-tricks.com/almanac/properties/h/hyphenate/
-// Requores "[lang]" attributeto be set on body
+// Requires "[lang]" attribute to be set on body
 @mixin hyphenate($value: auto) {
     $values: (none, manual, auto, inherit, initial, unset);
 
@@ -173,7 +163,7 @@
 
 @function strip-units($number) {
     @if type-of($number) == 'number' and not unitless($number) {
-        @return $number / ($number * 0 + 1);
+        @return math.div($number, ($number * 0 + 1));
     }
 
     @return $number;
@@ -188,13 +178,13 @@
 @function em($pxval, $base: 16) {
     $pxval: strip-units($pxval);
 
-    @return ($pxval / $base) + em;
+    @return math.div($pxval, $base) + em;
 }
 
 @function rem($pxval, $base: 16) {
     $pxval: strip-units($pxval);
 
-    @return ($pxval / $base) + rem;
+    @return math.div($pxval, $base) + rem;
 }
 
 // Exponent multipler
@@ -203,15 +193,15 @@
 
 @function pow($number, $exponent) {
     $value: 1;
-  
+
     @if $exponent > 0 {
-      @for $i from 1 through $exponent {
-        $value: $value * $number;
-      }
+        @for $i from 1 through $exponent {
+            $value: $value * $number;
+        }
     }
-  
+
     @return $value;
-  }
+}
 
 // Content Queries
 // -----------------------------------------------------------------------------
@@ -261,13 +251,13 @@
     $valid-options: map-keys($options);
 
     @debug &;
-    @debug "-----------------------";
+    @debug '-----------------------';
     @debug Valid options are below;
-    @debug "-----------------------";
+    @debug '-----------------------';
     @each $option in $options {
         @debug $option;
-    };
-    @return "The value #{$value} is not a valid option. Try #{$valid-options}. See #{$file} for details";
+    }
+    @return 'The value #{$value} is not a valid option. Try #{$valid-options}. See #{$file} for details';
 }
 
 @mixin debug() {

@@ -1,4 +1,7 @@
-# fissionkit
+# sproutkit
+
+uses Dart SCSS
+Install instructions: https://sass-lang.com/install
 
 ```
 npm i

@@ -1,7 +1,7 @@
 {
-    "name": "fissionkit",
+    "name": "sproutkit",
     "version": "1.0.0",
-    "description": "Components to Create Anything",
+    "description": "Atomic Token SCSS Framework",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/zforrester/fissionkit.git"
+        "url": "git+https://github.com/zforrester/sproutkit.git"
     },
     "keywords": [
         "SCSS",
@@ -20,13 +20,13 @@
         "Guide",
         "Style",
         "Guide",
-        "Component",
+        "Tokens",
         "Library"
     ],
     "author": "Zach Forrester",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/zforrester/fissionkit/issues"
+        "url": "https://github.com/zforrester/sproutkit/issues"
     },
-    "homepage": "https://github.com/zforrester/fissionkit#readme"
+    "homepage": "https://github.com/zforrester/sproutkit#readme"
 }

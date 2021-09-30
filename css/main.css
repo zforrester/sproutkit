@@ -1,25 +1,21 @@
-.button {
-  z-index: "1000";
-}
-.button .higher-button {
-  z-index: 1010;
-}
-
-[class^=box] {
+.box {
+  background: red;
   width: calc(15% - 8px);
-  border-radius: 10px;
-  position: relative;
-  margin: 8px;
-  display: inline-flex;
 }
-[class^=box]::before {
-  content: "";
-  display: block;
-  padding-top: 75%;
+@supports not (aspect-ratio: 0) {
+  .box {
+    position: relative;
+  }
+  .box::before {
+    content: "";
+    display: block;
+    padding-top: 37.7952755906%;
+  }
 }
-
-.box6 {
-  box-shadow: 0 24px 40px -8px rgba(20, 24, 31, 0.2);
+@supports (aspect-ratio: 0) {
+  .box {
+    aspect-ratio: 127/48;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
