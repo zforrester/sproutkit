@@ -2,7 +2,25 @@
 // Buttons
 // -------------------------------------------------------------------
 
-$button-styles: ('primary', 'secondary', 'tertiary');
+// Reset
+// -------------------------------------------------------------------
+
+@mixin button-reset {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: inline-block;
+    vertical-align: baseline;
+    background-color: transparent;
+    outline: none;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    white-space: normal;
+}
+
+$button-types: ('primary', 'secondary', 'tertiary');
 $button-sizes: ('small', 'medium', 'large');
 $button-layouts: ('label-left', 'label-center', 'label-right');
 
@@ -10,17 +28,32 @@ $button-layouts: ('label-left', 'label-center', 'label-right');
 //-------------------------------------------------------------------
 
 @mixin button-size($size) {
+    @if ($size == 'small') {
+        font-size: font-size('small');
+        padding: space(0.5) space(1);
+    }
+    @if ($size == 'medium') {
+        font-size: font-size('medium');
+        padding: space(1) space(1.5);
+    }
+    @if ($size == 'large') {
+        font-size: font-size('large');
+        padding: space(1.5) space(3);
+    }
+}
+
+@mixin button-label($size) {
     .label {
         @if ($size == 'small') {
-            @include font('primary', 'small', 'medium');
+            font-size: font-size('small');
             padding: space(0.5) space(1);
         }
         @if ($size == 'medium') {
-            @include font('primary', 'medium', 'medium');
+            font-size: font-size('medium');
             padding: space(1) space(1.5);
         }
         @if ($size == 'large') {
-            @include font('primary', 'large', 'medium');
+            font-size: font-size('large');
             padding: space(1.5) space(3);
         }
     }
@@ -30,9 +63,9 @@ $button-layouts: ('label-left', 'label-center', 'label-right');
     .icon {
         @include icon($icon-name);
         @include icon-size($size);
-    
+
         @if ($size == 'small') {
-            margin: 0 space(.5);
+            margin: 0 space(0.5);
         }
         @if ($size == 'medium') {
             margin: 0 space(1);
@@ -42,7 +75,6 @@ $button-layouts: ('label-left', 'label-center', 'label-right');
         }
     }
 }
-
 
 // Button Layout
 //------------------------------------------------------------------
@@ -59,45 +91,55 @@ $button-layouts: ('label-left', 'label-center', 'label-right');
     }
 }
 
-// Button Styles
+// Button Types
 //-------------------------------------------------------------------
 
-@mixin button-style($style) {
-    // Default styles
+@mixin button-type($type) {
+    // Default types
     display: flex;
     flex-wrap: nowrap;
     min-width: 0;
     text-decoration: none;
+    align-items: center;
 
-    @if ($style == 'primary') {
+    @if ($type == 'primary') {
         @include button-primary;
     }
-    @if ($style == 'secondary') {
+    @if ($type == 'secondary') {
         @include button-secondary;
     }
-    @if ($style == 'tertiary') {
+    @if ($type == 'tertiary') {
         @include button-tertiary;
     }
 }
 
 @mixin button-primary() {
-    background: green;
+    background: color('blue', 1);
+    color: color('white');
+
+    .icon {
+        background: color('white', 0.5);
+        -webkit-mask: none !important;
+    }
 
     &:hover {
         background: rgba(green, 0.2);
     }
 
-    &:active { 
-        // Styles 
+    &:active {
+        // Styles
     }
 
-    &:focus { 
-        // Styles 
+    &:focus {
+        // Styles
     }
 
-    &:disabled { 
-        // Styles 
+    &:disabled {
+        // Styles
     }
 }
 
-
+@mixin button-secondary() {
+    background: color('purple', 1);
+    color: color('white');
+}

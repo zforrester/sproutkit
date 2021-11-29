@@ -1,20 +1,17 @@
 // Button Functions
 //-------------------------------------------------------------------
 
-@mixin button(
-    $style: 'primary', 
-    $size: 'medium', 
-    $layout: 'label-center') {
-        @include get-button-style($style);
-        @include get-button-size($size);
-        @include get-button-layout($layout);
+@mixin button($type: 'primary', $size: 'medium', $layout: 'label-center') {
+    @include get-button-type($type);
+    @include get-button-size($size);
+    @include get-button-layout($layout);
 }
 
-@mixin get-button-style($style) {
-    @if index($button-styles, $style) {
-        @include button-style($style);
+@mixin get-button-type($type) {
+    @if index($button-types, $type) {
+        @include button-type($type);
     } @else {
-        @warn errorMessage($style, $button-styles, 'components/_buttons.scss');
+        @warn errorMessage($type, $button-types, 'components/_buttons.scss');
     }
 }
 

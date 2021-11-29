@@ -1,17 +1,24 @@
-@import 'sproutkit/_source';
+@use 'sproutkit/_source' as *;
 
-.box {
-    background: color('green');
-    height: 50px;
-    width: 50px;
-    background-color: blue;
-    // @include aspect-ratio(127px, 48px);
-    @include transition([width, height]);
-    @include transition(background-color);
-    @include transition();
+button {
+    @include button-reset();
+}
 
-    &:hover {
-        width: 800px;
-        background-color: red;
-    }
+.buttons {
+    display: flex;
+    gap: space(1);
+}
+
+button {
+    // @include debug;
+    @include button();
+    @include button-icon('error', 'small');
+}
+
+.secondary {
+    @include button(
+        $type: 'secondary',
+        $size: 'medium',
+        $layout: 'label-center'
+    );
 }

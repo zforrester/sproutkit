@@ -28,5 +28,8 @@
     "bugs": {
         "url": "https://github.com/zforrester/sproutkit/issues"
     },
-    "homepage": "https://github.com/zforrester/sproutkit#readme"
+    "homepage": "https://github.com/zforrester/sproutkit#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.13"
+    }
 }

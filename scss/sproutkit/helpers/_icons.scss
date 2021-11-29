@@ -59,9 +59,8 @@ $show-icon-guides: false;
     $type: type-of($size);
     @if $type == 'number' {
         width: strip-units($size) * 1%;
-        @include ratio(1, 1);
-    }
-    @else if map-has-key($icon-sizes, $size) {
+        @include aspect-ratio(1, 1);
+    } @else if map-has-key($icon-sizes, $size) {
         width: map-get($icon-sizes, $size);
         height: map-get($icon-sizes, $size);
     } @else {
