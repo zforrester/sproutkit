@@ -183,8 +183,12 @@
 
 @function rem($pxval, $base: 16) {
     $pxval: strip-units($pxval);
+    @debug 'px' $pxval;
 
-    @return math.div($pxval, $base) + rem;
+    $normalized: math.div($pxval, $base);
+    @debug 'normal' $normalized;
+
+    @return $normalized * 1rem;
 }
 
 // Exponent multipler

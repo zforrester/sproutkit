@@ -16,20 +16,37 @@ $font-families: (
 // Typographic Scale
 //-------------------------------------------------------------------
 
+// $font-sizes: (
+//     'xxx-huge': 96px,
+//     'xx-huge': 72px,
+//     'x-huge': 56px,
+//     'huge': 48px,
+//     'xxx-large': 36px,
+//     'xx-large': 32px,
+//     'x-large': 24px,
+//     'large': 18px,
+//     'medium': 16px,
+//     'small': 14px,
+//     'x-small': 12px,
+//     'xx-small': 11px,
+//     'xxx-small': 9px,
+// );
+
 $font-sizes: (
-    'xxx-huge': 96px,
-    'xx-huge': 72px,
-    'x-huge': 56px,
-    'huge': 48px,
-    'xxx-large': 36px,
-    'xx-large': 32px,
-    'x-large': 24px,
-    'large': 18px,
-    'medium': 16px,
-    'small': 14px,
-    'x-small': 12px,
-    'xx-small': 11px,
-    'xxx-small': 9px,
+    12: rem(12px),
+    14: rem(14px),
+    16: rem(16px),
+    18: rem(18px),
+    24: rem(24px),
+    32: rem(32px),
+    40: rem(40px),
+    48: rem(48px),
+    56: rem(56px),
+    64: rem(64px),
+    80: rem(80px),
+    96: rem(96px),
+    120: rem(120px),
+    136: rem(136px),
 );
 
 // Font Weights
@@ -56,4 +73,3 @@ $line-heights: (
     'normal': 1.6,
     'large': 1.8,
 );
-

@@ -2,9 +2,10 @@
 
 body {
     content: 'body';
-    background: color('beige');
-    color: color('red-pink', 0.5);
-    outline: 1px solid color('red-600', 0.5);
-    border: color('light-brown');
+    // background: color('beige');
+    // color: color('red-pink', 0.5);
+    // border: color('light-brown');
     // box-shadow: $primary-background;
+    outline: 1px solid color('red-600', 0.5);
+    font-size: font-size(33);
 }

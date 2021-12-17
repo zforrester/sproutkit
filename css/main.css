@@ -1,9 +1,19 @@
-body {
-  content: "body";
-  background: "WARN: Invalid Color";
-  color: "WARN: Invalid Color";
-  outline: 1px solid rgba(184, 20, 20, 0.5);
-  border: "WARN: Invalid Color";
-}
+/* Error: Expected '.
+ *    ,
+ * 29 |         @return 'WARNING: Invalid Font Weight;
+ *    |                                               ^
+ *    '
+ *   scss/sproutkit/helpers/_typography.scss 29:47  @import
+ *   scss/sproutkit/_source.scss 6:9                @use
+ *   scss/main.scss 1:1                             root stylesheet */
 
-/*# sourceMappingURL=main.css.map */
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Expected '.\a    \2577 \a 29 \2502          @return 'WARNING: Invalid Font Weight;\a    \2502                                                ^\a    \2575 \a   scss/sproutkit/helpers/_typography.scss 29:47  @import\a   scss/sproutkit/_source.scss 6:9                @use\a   scss/main.scss 1:1                             root stylesheet";
+}
