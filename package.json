@@ -30,6 +30,7 @@
     },
     "homepage": "https://github.com/zforrester/sproutkit#readme",
     "devDependencies": {
-        "nodemon": "^2.0.13"
+        "nodemon": "^2.0.13",
+        "sass": "^1.45.0"
     }
 }

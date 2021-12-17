@@ -1,26 +1,60 @@
+@use "sass:string";
+
 //-------------------------------------------------------------------
 // Color Helper Functions
 //-------------------------------------------------------------------
 
-@function color($palette, $shade: 1, $alpha: 1) {
-    @if map-has-key($colors, $palette) {
-        $color: map-get($colors, $palette);
-        $type: type-of($color);
-        @if $type == 'map' {
-            @if map-has-key(map-get($colors, $palette), $shade) {
-                $color: map-deep-get($colors, $palette, $shade);
-            } @else {
-                // @warn errorMessage($shade, $colors, 'tokens/_colors.scss');
-                @return null;
+@function contains($string, $find) {
+    @if (str-index($string, $find)) {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+@function color($color, $alpha: 1) {
+    @if contains($color, '-') {
+        $palette: string.slice($color, 1, str-index($color, '-') - 1);
+        $shade: string.slice($color, str-index($color, '-') + 1);
+
+        @if map-has-key($colors, $palette) {
+            $colorPalette: map-get($colors, $palette);
+            @if map-has-key($colorPalette, $shade) {
+                $color: map-get($colorPalette, $shade);
+                @return rgba($color, $alpha);
             }
-        } @else {
-            $alpha: $shade;
-            $color: map-get($colors, $palette);
+        } @else if map-has-key($colors, $color) {
+            $color: map-get($colors, $color);
+            @return rgba($color, $alpha);
         }
+    } @else if map-has-key($colors, $color) {
+        $color: map-get($colors, $color);
         @return rgba($color, $alpha);
     }
 
-    // @debug $palette;
-    @warn errorMessage($palette, $colors, 'tokens/_colors.scss');
+    @warn errorMessage($color, $colors, 'tokens/_colors.scss');
+    @return 'WARN: Invalid Color';
     @return null;
 }
+
+//     @if map-has-key($colors, $palette) {
+//         $color: map-get($colors, $palette);
+//         $type: type-of($color);
+//         @debug $color;
+//
+//         // @if $type == 'map' {
+//         //     @if map-has-key(map-get($colors, $palette), $shade) {
+//         //         $color: map-deep-get($colors, $palette, $shade);
+//         //     } @else {
+//         //         // @warn errorMessage($shade, $colors, 'tokens/_colors.scss');
+//         //         @return null;
+//         //     }
+//         // } @else {
+//         //     $alpha: $shade;
+//         //     $color: map-get($colors, $palette);
+//         // }
+//         // @return rgba($color, $alpha);
+//     }
+
+// @debug $palette;
+// @warn errorMessage($palette, $colors, 'tokens/_colors.scss');

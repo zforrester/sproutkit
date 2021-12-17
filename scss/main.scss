@@ -1,24 +1,10 @@
 @use 'sproutkit/_source' as *;
 
-button {
-    @include button-reset();
-}
-
-.buttons {
-    display: flex;
-    gap: space(1);
-}
-
-button {
-    // @include debug;
-    @include button();
-    @include button-icon('error', 'small');
-}
-
-.secondary {
-    @include button(
-        $type: 'secondary',
-        $size: 'medium',
-        $layout: 'label-center'
-    );
+body {
+    content: 'body';
+    background: color('beige');
+    color: color('red-pink', 0.5);
+    outline: 1px solid color('red-600', 0.5);
+    border: color('light-brown');
+    // box-shadow: $primary-background;
 }
