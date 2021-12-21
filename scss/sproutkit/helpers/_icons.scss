@@ -25,12 +25,12 @@
 
     svg {
         @include absolute;
-        @include transition-fast;
+        @include transition;
         height: 100%;
         width: 100%;
 
         path {
-            @include transition-fast;
+            @include transition;
         }
     }
 }

@@ -1,5 +1,12 @@
 @use 'sass:math';
 
+@mixin apply($values...) {
+    content: '#{$values}';
+    @each $value in $values {
+        content: '#{$value}';
+    }
+}
+
 // Layout
 // -----------------------------------------------------------------------------
 

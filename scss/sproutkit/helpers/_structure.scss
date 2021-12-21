@@ -24,7 +24,12 @@
 //-------------------------------------------------------------------
 @function z($index, $modifer: '') {
     $z-base: 10;
-    @return pow($z-base, $index) + $modifer;
+
+    @if ($index < 0) {
+        $index: $index * -1;
+        @return #{-1 * pow($z-base, $index) - $modifer};
+    }
+    @return #{pow($z-base, $index) + $modifer};
 }
 
 // Lines

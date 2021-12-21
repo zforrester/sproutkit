@@ -46,7 +46,7 @@ $show-focal-point-guides: false;
 
 @mixin show-focal-point-guides($pos-x, $pos-y, $show-focal-point-guides) {
     @if $show-focal-point-guides {
-        @include transition-fast;
+        @include transition;
         position: relative;
 
         &::before,
@@ -54,7 +54,7 @@ $show-focal-point-guides: false;
             background: red;
             position: absolute;
             content: '';
-            @include transition-fast;
+            @include transition;
 
             @supports (backdrop-filter: brightness()) {
                 background: rgba(red, 0.5);
