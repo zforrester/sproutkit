@@ -1,5 +1,9 @@
 @use 'sproutkit/_source' as *;
 
+:root {
+    --shadow-color: red;
+}
+
 body {
     content: 'body';
     // background: color('beige');
@@ -7,5 +11,16 @@ body {
     // border: color('light-brown');
     // box-shadow: $primary-background;
     outline: 1px solid color('red-600', 0.5);
-    font-size: font-size(33);
+    font-size: font-size(32);
+    border-radius: radius(1) radius(2) radius(3) radius(4) radius(5);
+    box-shadow: shadow('diffuse-1'), shadow('throw-4');
+}
+
+div {
+    // @include aspect-ratio(1, 1);
+    width: space(10);
+    border: line('dark-1');
+    background: color('blue-500');
+    box-shadow: shadowLine(color('red-500'), 'top', 8px),
+        shadowLine('dark-1', 'left'), shadowLine('dark-1', 'bottom');
 }

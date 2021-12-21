@@ -24,32 +24,66 @@ $screen-sizes: (
 // Lines
 //-------------------------------------------------------------------
 
+$line-colors: (
+    'light-1': color('gray-300', 0.2),
+    'light-2': color('gray-200', 0.6),
+    'light-3': color('gray-100', 0.9),
+    'dark-1': color('gray-800', 0.2),
+    'dark-2': color('gray-800', 0.6),
+    'dark-3': color('gray-900', 0.9),
+);
+
 $lines: (
-    'light': thin solid color('gray-800', 0.4),
-    'dark': thin solid color('gray-800', 0.5),
-    'normal': thin solid color('gray-800', 0.3),
+    'dark-1': thin solid line-color('dark-1'),
+    'dark-2': thin solid line-color('dark-2'),
+    'dark-3': thin solid line-color('dark-3'),
+    'light-1': thin solid line-color('light-1'),
+    'light-2': thin solid line-color('light-2'),
+    'light-3': thin solid line-color('light-3'),
 );
 
 // Border Radius
 //-------------------------------------------------------------------
 
 $radii: (
-    'x-large': 16px,
-    'large': 10px,
-    'medium': 8px,
-    'small': 6px,
-    'x-small': 4px,
-    'xx-small': 2px,
+    '12': 96px,
+    '11': 80px,
+    '10': 64px,
+    '9': 40px,
+    '8': 32px,
+    '7': 24px,
+    '5': 16px,
+    '4': 14px,
+    '3': 12px,
+    '2': 10px,
+    '1': 8px,
+    '.75': 6px,
+    '.5': 4px,
+    '.25': 2px,
 );
 
-$shadow-color: color('gray-900', .2);
+// $shadow-color: color('gray-900', 0.5);
+$shadow-color: var(--shadow-color, color('gray-900', 0.5));
 
 $shadows: (
-    1: 0 1px 2px 0 $shadow-color,
-    2: 0 2px 4px 0 $shadow-color,
-    3: 0 4px 8px 0 $shadow-color,
-    4: 0 8px 16px 0 $shadow-color,
-    5: 0 16px 32px 0 $shadow-color,
-    6: 0 24px 40px -8px $shadow-color,
-)
-
+    'diffuse-1': 0 1px 2px 0 $shadow-color,
+    'diffuse-2': 0 2px 4px 0 $shadow-color,
+    'diffuse-3': 0 4px 8px 0 $shadow-color,
+    'diffuse-4': 0 8px 16px 0 $shadow-color,
+    'diffuse-5': 0 16px 32px 0 $shadow-color,
+    'diffuse-6': 0 24px 40px 0 $shadow-color,
+    'diffuse-7': 0 32px 64px 0 $shadow-color,
+    'diffuse-8': 0 40px 80px 0 $shadow-color,
+    'diffuse-9': 0 48px 96px 0 $shadow-color,
+    'diffuse-10': 0 56px 112px 0 $shadow-color,
+    'throw-1': 0 2px 2px -1px $shadow-color,
+    'throw-2': 0 4px 4px -2px $shadow-color,
+    'throw-3': 0 6px 8px -4px $shadow-color,
+    'throw-4': 0 12px 16px -8px $shadow-color,
+    'throw-5': 0 24px 32px -16px $shadow-color,
+    'throw-6': 0 32px 40px -24px $shadow-color,
+    'throw-7': 0 40px 64px -32px $shadow-color,
+    'throw-8': 0 48px 80px -40px $shadow-color,
+    'throw-9': 0 56px 96px -48px $shadow-color,
+    'throw-10': 0 64px 112px -56px $shadow-color,
+);

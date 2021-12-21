@@ -1,10 +1,12 @@
+@use 'sass:string';
+
 // Dimensions
 //-------------------------------------------------------------------
 // D stands for Dimension
 
 @function space($scale) {
-    $d-base: 8px;
-    @return $d-base * $scale;
+    $base: 8px;
+    @return $base * $scale;
 }
 
 // Screen size
@@ -28,6 +30,15 @@
 // Lines
 //-------------------------------------------------------------------
 
+@function line-color($color: normal) {
+    @if map-has-key($line-colors, $color) {
+        $color: map-get($line-colors, $color);
+        @return $color;
+    }
+    @warn errorMessage($color, $line-colors, 'tokens/_structure.scss');
+    @return null;
+}
+
 @function line($style: normal) {
     @if map-has-key($lines, $style) {
         $style: map-get($lines, $style);
@@ -37,10 +48,31 @@
     @return null;
 }
 
+@function shadowLine($color: normal, $edge: 'bottom', $stroke-weight: 1px) {
+    @if map-has-key($line-colors, $color) {
+        $color: map-get($line-colors, $color);
+    }
+    @if ($edge == 'top') {
+        @return 0 -$stroke-weight 0 0 #{$color};
+    } @else if ($edge == 'left') {
+        @return -$stroke-weight 0 0 0 #{$color};
+    } @else if ($edge == 'right') {
+        @return $stroke-weight 0 0 0 #{$color};
+    } @else if ($edge == 'bottom') {
+        @return 0 $stroke-weight 0 0 #{$color};
+    } @else if ($edge == 'outline') {
+        @return 0 0 0 $stroke-weight #{$color};
+    }
+    @warn errorMessage($color, $line-colors, 'tokens/_structure.scss');
+    @return null;
+}
+
 // Border Radius
 //-------------------------------------------------------------------
 
 @function radius($size) {
+    $size: '#{$size}';
+
     @if map-has-key($radii, $size) {
         $size: map-get($radii, $size);
         @return $size;
@@ -49,26 +81,13 @@
     @return null;
 }
 
-// @function shadow($x, $y: 0, $steps: 0, $color: color('gray-900', .5) ) {
-//     $blur: $x * 1.5;
-//     $base: #{$y}px #{$x}px #{$blur}px $color;
-
-//     @if $steps {
-//         $shadow-spread: ();
-//         @for $i from 1 through $steps {
-//             $blur: $blur * $i;
-//             $x: $x * $i;
-//             $shadow: #{$y}px #{$x}px #{$blur}px $color;
-//             $shadow-spread: append($shadow-spread, $shadow, comma);
-//         }
-//         @return $shadow-spread;
-//     }
-
-//     @return $base;
-// }
+// Drop Shadows
+//-------------------------------------------------------------------
 
 @function shadow($level) {
     @if map-has-key($shadows, $level) {
+        $shadow-color: color('gray-900', 0.2);
+
         $level: map-get($shadows, $level);
         @return $level;
     }

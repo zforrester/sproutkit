@@ -26,7 +26,7 @@
         @return map-get($font-weights, $weight);
     } @else {
         @warn errorMessage($weight, $font-weights, 'tokens/_typography.scss');
-        @return 'WARNING: Invalid Font Weight;
+        @return 'WARNING: Invalid Font Weight';
     }
 }
 
@@ -36,7 +36,7 @@
         @return $height;
     } @else {
         @warn errorMessage($height, $line-heights, 'tokens/_typography.scss');
-        @return 'WARNING: Invalid Line Height;
+        @return 'WARNING: Invalid Line Height';
     }
 }
 

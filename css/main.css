@@ -1,19 +1,20 @@
-/* Error: Expected '.
- *    ,
- * 29 |         @return 'WARNING: Invalid Font Weight;
- *    |                                               ^
- *    '
- *   scss/sproutkit/helpers/_typography.scss 29:47  @import
- *   scss/sproutkit/_source.scss 6:9                @use
- *   scss/main.scss 1:1                             root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Expected '.\a    \2577 \a 29 \2502          @return 'WARNING: Invalid Font Weight;\a    \2502                                                ^\a    \2575 \a   scss/sproutkit/helpers/_typography.scss 29:47  @import\a   scss/sproutkit/_source.scss 6:9                @use\a   scss/main.scss 1:1                             root stylesheet";
+:root {
+  --shadow-color: red;
 }
+
+body {
+  content: "body";
+  outline: 1px solid rgba(184, 20, 20, 0.5);
+  font-size: 2rem;
+  border-radius: 8px 10px 12px 14px 16px;
+  box-shadow: 0 1px 2px 0 var(--shadow-color, rgba(20, 24, 31, 0.5)), 0 12px 16px -8px var(--shadow-color, rgba(20, 24, 31, 0.5));
+}
+
+div {
+  width: 80px;
+  border: thin solid rgba(41, 48, 61, 0.2);
+  background: #1aa8e6;
+  box-shadow: -8px 0 0 #e61a1a, -1px 0 0 0 rgba(41, 48, 61, 0.2), 0 1px 0 0 rgba(41, 48, 61, 0.2);
+}
+
+/*# sourceMappingURL=main.css.map */
