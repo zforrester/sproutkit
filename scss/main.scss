@@ -1,17 +1,15 @@
 @use 'sproutkit/_source' as *;
 
-:root {
-    --shadow-color: red;
+div.red {
+    color: color('orange-100');
+    background-color: color('red-800');
 }
 
-body {
-    content: 'body';
-    outline: 1px solid color('red-600', 0.5);
-    font-size: font-size(32);
-    border-radius: radius(1) radius(2) radius(3) radius(4) radius(5);
-    box-shadow: shadow('diffuse-1'), shadow('throw-4');
-}
-
-div {
-    @include apply('color-blue-500', 'bg-blue-200');
+div.blue {
+    @include apply(
+        color-blue-500,
+        bg-blue-200,
+        border-green-200,
+        line-b-dark-2
+    );
 }
