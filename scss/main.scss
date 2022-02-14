@@ -5,15 +5,34 @@
     box-sizing: border-box;
 }
 
-div.red {
-    // color: color('true_gray-100');
-    @include font-set('body-12');
-    // @include font(12, 'regular', 'primary', 'normal');
-    // color:color('orange-100');
-    // background-color: color('red-800');
+// div.red {
+//     // color: color('true_gray-100');
+//     @include font-set('body-12');
+//     // @include font(12, 'regular', 'primary', 'normal');
+//     // color:color('orange-100');
+//     // background-color: color('red-800');
 
-    .strong {
-        @include font-set-weight('body-12-strong');
+//     .strong {
+//         @include font-set-weight('body-12-strong');
+//     }
+// }
+
+div {
+    padding: space(2);
+    // display: inline-flex;
+    // flex-wrap: nowrap;
+    // align-items: center;
+}
+
+a {
+    @include link();
+
+    .icon {
+        @include debug;
+    }
+
+    &.backwards {
+        @include link('medium', 'label-left');
     }
 }
 

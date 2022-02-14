@@ -9,24 +9,30 @@ $link-layouts: ('label-left', 'label-center', 'label-right');
 //-------------------------------------------------------------------
 
 @mixin link-size($size) {
-    margin: space(-0.5) space(-1);
-    .label,
-    .icon {
-        margin: space(0.5) space(1);
-    }
+    padding: space(0.5) space(1);
+
     @if ($size == 'small') {
-        .label {
-            @include font('primary', 'small', 'medium');
+        @include font(12, 'regular', 'primary', 'normal');
+        gap: space(0.5);
+
+        .icon {
+            @include icon-size('small');
         }
     }
     @if ($size == 'medium') {
-        .label {
-            @include font('primary', 'medium', 'medium');
+        @include font(14, 'regular', 'primary', 'normal');
+        gap: space(1);
+
+        .icon {
+            @include icon-size('medium');
         }
     }
     @if ($size == 'large') {
-        .label {
-            @include font('primary', 'large', 'medium');
+        @include font(18, 'regular', 'primary', 'normal');
+        gap: space(2);
+
+        .icon {
+            @include icon-size('large');
         }
     }
 }
@@ -37,20 +43,35 @@ $link-layouts: ('label-left', 'label-center', 'label-right');
 @mixin link-layout($layout) {
     @if ($layout == 'label-left') {
         text-align: left;
+
+        .icon {
+            order: 100;
+        }
     }
     @if ($layout == 'label-center') {
         text-align: center;
+
+        .icon {
+            order: 0;
+        }
     }
     @if ($layout == 'label-right') {
         text-align: right;
+
+        .icon {
+            order: 0;
+        }
     }
 }
 
 @mixin link-style {
     display: flex;
     flex-wrap: nowrap;
+    align-items: center;
     min-width: 0;
     text-decoration: none;
+
+    @include debug;
 
     &:hover {
         color: green;

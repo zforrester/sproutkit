@@ -1,5 +1,4 @@
 @use 'sass:string';
-@use 'sass:list';
 
 //-------------------------------------------------------------------
 // Typography Helper Functions
@@ -57,11 +56,11 @@
 
     @if map-has-key($font-settings, $set) {
         $set: map-get($font-settings, $set);
-        @include get-font-weight($set...);
+        @include get-font-set-weight($set...);
     }
 }
 
-@mixin get-font-weight(
+@mixin get-font-set-weight(
     $size: '',
     $weight: '',
     $family: 'primary',

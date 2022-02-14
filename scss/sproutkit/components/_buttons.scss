@@ -31,14 +31,17 @@ $button-layouts: ('label-left', 'label-center', 'label-right');
     @if ($size == 'small') {
         font-size: font-size('small');
         padding: space(0.5) space(1);
+        gap: space(0.5);
     }
     @if ($size == 'medium') {
         font-size: font-size('medium');
         padding: space(1) space(1.5);
+        gap: space(1) space;
     }
     @if ($size == 'large') {
         font-size: font-size('large');
         padding: space(1.5) space(3);
+        gap: space(1.5);
     }
 }
 
@@ -63,16 +66,6 @@ $button-layouts: ('label-left', 'label-center', 'label-right');
     .icon {
         @include icon($icon-name);
         @include icon-size($size);
-
-        @if ($size == 'small') {
-            margin: 0 space(0.5);
-        }
-        @if ($size == 'medium') {
-            margin: 0 space(1);
-        }
-        @if ($size == 'large') {
-            margin: 0 space(1.5);
-        }
     }
 }
 
@@ -82,12 +75,24 @@ $button-layouts: ('label-left', 'label-center', 'label-right');
 @mixin button-layout($layout) {
     @if ($layout == 'label-left') {
         text-align: left;
+
+        .label {
+            order: -1;
+        }
     }
     @if ($layout == 'label-center') {
         text-align: center;
+
+        .label {
+            order: 0;
+        }
     }
     @if ($layout == 'label-right') {
         text-align: right;
+
+        .label {
+            order: 100;
+        }
     }
 }
 
@@ -119,7 +124,6 @@ $button-layouts: ('label-left', 'label-center', 'label-right');
 
     .icon {
         background: color('white', 0.5);
-        -webkit-mask: none !important;
     }
 
     &:hover {
