@@ -53,10 +53,11 @@
     @return null;
 }
 
-@function shadowLine($color: normal, $edge: 'bottom', $stroke-weight: 1px) {
-    @if map-has-key($line-colors, $color) {
-        $color: map-get($line-colors, $color);
-    }
+@function shadowLine($edge: 'bottom', $color: 'dark-1', $stroke-weight: 1px) {
+    // @if map-has-key($line-colors, $color) {
+    //     $color: map-get($line-colors, $color);
+    // }
+
     @if ($edge == 'top') {
         @return 0 -$stroke-weight 0 0 #{$color};
     } @else if ($edge == 'left') {

@@ -17,6 +17,9 @@ $font-families: (
 //-------------------------------------------------------------------
 
 $font-sizes: (
+    6: rem(6px),
+    8: rem(8px),
+    10: rem(10px),
     12: rem(12px),
     14: rem(14px),
     16: rem(16px),
@@ -56,4 +59,55 @@ $line-heights: (
     'small': 1.2,
     'normal': 1.6,
     'large': 1.8,
+);
+
+$font-settings: (
+    'body-12': (
+        12,
+        'regular',
+        'primary',
+        'normal',
+    ),
+    'body-14': (
+        14,
+        'regular',
+        'primary',
+        'normal',
+    ),
+    'body-18': (
+        18,
+        'regular',
+        'primary',
+        'normal',
+    ),
+    'body-24': (
+        24,
+        'regular',
+        'primary',
+        'normal',
+    ),
+    'body-12-strong': (
+        12,
+        'semi-bold',
+        'primary',
+        'normal',
+    ),
+    'body-14-strong': (
+        14,
+        'semi-bold',
+        'primary',
+        'normal',
+    ),
+    'body-18-strong': (
+        18,
+        'semi-bold',
+        'primary',
+        'normal',
+    ),
+    'body-24-strong': (
+        24,
+        'semi-bold',
+        'primary',
+        'normal',
+    ),
 );

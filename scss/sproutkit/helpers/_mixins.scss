@@ -1,44 +1,5 @@
 @use 'sass:math';
-@use "sass:string";
-
-@mixin apply($values...) {
-    @each $value in $values {
-        @if contains($value, 'color-') {
-            $color: string.slice($value, str-index($value, '-') + 1);
-            color: color(#{$color});
-        }
-        @if contains($value, 'bg-') {
-            $color: string.slice($value, str-index($value, '-') + 1);
-            background-color: color(#{$color});
-        }
-        @if contains($value, 'border-') {
-            $color: string.slice($value, str-index($value, '-') + 1);
-            border: thin solid color(#{$color});
-        }
-        @if contains($value, 'line-') {
-            @if contains($value, 'line-t') {
-                $sliceIndex: string.index($value, 't-') + 2;
-                $color: string.slice($value, $sliceIndex);
-                border-top: line(#{$color});
-            } @else if contains($value, 'line-b') {
-                $sliceIndex: string.index($value, 'b-') + 2;
-                $color: string.slice($value, $sliceIndex);
-                border-bottom: line(#{$color});
-            } @else if contains($value, 'line-l') {
-                $sliceIndex: string.index($value, 'l-') + 2;
-                $color: string.slice($value, $sliceIndex);
-                border-left: line(#{$color});
-            } @else if contains($value, 'line-r') {
-                $sliceIndex: string.index($value, 'r-') + 2;
-                $color: string.slice($value, $sliceIndex);
-                border-right: line(#{$color});
-            } @else {
-                $color: string.slice($value, str-index($value, '-') + 1);
-                border: line(#{$color});
-            }
-        }
-    }
-}
+@use 'sass:string';
 
 // Layout
 // -----------------------------------------------------------------------------
@@ -299,6 +260,48 @@
         @debug $option;
     }
     @return 'See #{$file} for details';
+}
+
+// Apply Styles
+// -----------------------------------------------------------------------------
+
+@mixin apply($values...) {
+    @each $value in $values {
+        @if contains($value, 'color-') {
+            $color: string.slice($value, str-index($value, '-') + 1);
+            color: color(#{$color});
+        }
+        @if contains($value, 'bg-') {
+            $color: string.slice($value, str-index($value, '-') + 1);
+            background-color: color(#{$color});
+        }
+        @if contains($value, 'border-') {
+            $color: string.slice($value, str-index($value, '-') + 1);
+            border: thin solid color(#{$color});
+        }
+        @if contains($value, 'line-') {
+            @if contains($value, 'line-t') {
+                $sliceIndex: string.index($value, 't-') + 2;
+                $color: string.slice($value, $sliceIndex);
+                border-top: line(#{$color});
+            } @else if contains($value, 'line-b') {
+                $sliceIndex: string.index($value, 'b-') + 2;
+                $color: string.slice($value, $sliceIndex);
+                border-bottom: line(#{$color});
+            } @else if contains($value, 'line-l') {
+                $sliceIndex: string.index($value, 'l-') + 2;
+                $color: string.slice($value, $sliceIndex);
+                border-left: line(#{$color});
+            } @else if contains($value, 'line-r') {
+                $sliceIndex: string.index($value, 'r-') + 2;
+                $color: string.slice($value, $sliceIndex);
+                border-right: line(#{$color});
+            } @else {
+                $color: string.slice($value, str-index($value, '-') + 1);
+                border: line(#{$color});
+            }
+        }
+    }
 }
 
 // Debug boxes

@@ -1,9 +1,3 @@
-// Icon Library
-//-------------------------------------------------------------------
-// List out each icon file to generate a CSS class
-
-$icon-list: ('plus', 'error');
-
 // Icon Sizes
 //-------------------------------------------------------------------
 
@@ -15,3 +9,9 @@ $icon-sizes: (
     'x-small': space(2),
     'xx-small': space(1.5),
 );
+
+// Icon Library
+//-------------------------------------------------------------------
+// List out each icon file to generate a CSS class
+
+$icon-list: ('plus', 'error');
