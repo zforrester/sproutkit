@@ -53,10 +53,14 @@
     @return null;
 }
 
-@function shadowLine($edge: 'bottom', $color: 'dark-1', $stroke-weight: 1px) {
-    // @if map-has-key($line-colors, $color) {
-    //     $color: map-get($line-colors, $color);
-    // }
+@function shadowLine($color: 'dark-1', $edge: 'outline', $stroke-weight: 1px) {
+    @if contains(#{$color}, 'dark') {
+        $color: line-color(#{$color});
+    } @else if contains(#{$color}, 'light') {
+        $color: line-color(#{$color});
+    } @else {
+        $color: color(#{$color});
+    }
 
     @if ($edge == 'top') {
         @return 0 -$stroke-weight 0 0 #{$color};
@@ -90,13 +94,17 @@
 // Drop Shadows
 //-------------------------------------------------------------------
 
-@function shadow($level) {
-    @if map-has-key($shadows, $level) {
-        $shadow-color: color('gray-900', 0.2);
+@function shadow($shadow-style, $shadow-color: 'gray-900', $opacity: 0.4) {
+    @if map-has-key($shadows, $shadow-style) {
+        @if type-of($shadow-color) != string {
+            $shadow-color: $shadow-color;
+        } @else {
+            $shadow-color: color($shadow-color, $opacity);
+        }
 
-        $level: map-get($shadows, $level);
-        @return $level;
+        $shadow-style: map-get($shadows, $shadow-style);
+        @return #{$shadow-style $shadow-color};
     }
-    @warn errorMessage($level, $shadows, 'tokens/_structure.scss');
+    @warn errorMessage($shadow-style, $shadows, 'tokens/_structure.scss');
     @return null;
 }

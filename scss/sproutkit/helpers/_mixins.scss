@@ -246,6 +246,14 @@
     @return $map;
 }
 
+@function contains($string, $find) {
+    @if (str-index($string, $find)) {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
 // Error Message
 // -----------------------------------------------------------------------------
 
