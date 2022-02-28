@@ -1,4 +1,6 @@
 @use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
 
 //-------------------------------------------------------------------
 // Typography Helper Functions
@@ -42,6 +44,16 @@
     }
 }
 
+@function letter-spacing($spacing: 'normal') {
+    @if map-has-key($letter-spacing, $spacing) {
+        $spacing: map-get($letter-spacing, $spacing);
+        @return string.unquote($spacing);
+    } @else {
+        @warn errorMessage($spacing, $letter-spacing, 'tokens/_typography.scss');
+        @return 'WARNING: Invalid Letter Spacing';
+    }
+}
+
 @mixin font-set($set: '') {
     @debug $set;
 
@@ -63,7 +75,7 @@
 @mixin get-font-set-weight(
     $size: '',
     $weight: '',
-    $family: 'primary',
+    $family: list.nth(map-keys($font-families), 1),
     $line-height: 'normal'
 ) {
     @if ($weight) {
@@ -74,9 +86,13 @@
 @mixin font(
     $size: '',
     $weight: '',
-    $family: 'primary',
-    $line-height: 'normal'
+    $family: list.nth(map-keys($font-families), 1),
+    $line-height: 'normal',
+    $letter-spacing: 'normal',
+    $properties...
 ) {
+    @debug $family;
+
     @if ($family) {
         font-family: font-family($family);
     }
@@ -88,5 +104,20 @@
     }
     @if ($line-height) {
         line-height: line-height($line-height);
+    }
+    @if ($letter-spacing) {
+        letter-spacing: letter-spacing($letter-spacing);
+    }
+
+    @each $property in $properties {
+        @if $property == 'capitalize' {
+            text-transform: capitalize;
+        }
+        @if $property == 'uppercase' {
+            text-transform: uppercase;
+        }
+        @if $property == 'lowercase' {
+            text-transform: lowercase;
+        }
     }
 }

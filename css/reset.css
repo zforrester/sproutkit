@@ -45,6 +45,9 @@ button,
 textarea,
 select {
   font: inherit;
+  appearance: unset;
+  outline: none;
+  border: none;
 }
 
 p,

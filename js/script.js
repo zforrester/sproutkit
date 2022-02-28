@@ -7,8 +7,6 @@
 // const hues = colors
 
 const hueData = [
-    {'white': '#fff'},
-    { 'black': '#000'},
     { 'true_gray': [
          {'50': 'hsl(0, 0%, 98%)'},
          {'100': 'hsl(0, 0%, 95%)'},
