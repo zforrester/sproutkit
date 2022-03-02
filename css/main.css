@@ -23,8 +23,19 @@ body {
   width: 100%;
 }
 .hue-list .hue {
-  width: 1%;
-  flex-grow: 1;
+  width: 10%;
+}
+@media only screen and (min-width: 80rem) {
+  .hue-list .hue {
+    width: 8%;
+    flex-grow: 1;
+  }
+}
+@media only screen and (min-width: 112.5rem) {
+  .hue-list .hue {
+    width: 1%;
+    flex-grow: 1;
+  }
 }
 .hue-list h3 {
   font-family: "Montserrat", sans-serif;
@@ -41,26 +52,67 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
+  padding: 4px;
   flex-grow: 1;
+  pointer-events: none;
 }
 
 .swatch {
   flex-grow: 1;
   position: relative;
-  display: flex;
+  pointer-events: auto;
 }
-.swatch .name,
-.swatch .value {
-  position: absolute;
+.swatch .description {
+  position: relative;
+  display: flex;
+  padding: 8px 0;
+  line-height: 1;
+}
+.swatch .description .name,
+.swatch .description .value {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.5rem;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: normal;
+  transition: 0.3s cubic-bezier(0.3, 0.9, 0.4, 0.98);
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, height, width, top, left, right, bottom, max-height, max-width, min-height, min-width;
+  line-height: 1;
+  display: block;
+}
+@media (prefers-reduced-motion: reduce) {
+  .swatch .description .name,
+.swatch .description .value {
+    transition-duration: 0 !important;
+  }
+  .swatch .description .name:hover,
+.swatch .description .value:hover {
+    transition-duration: 0 !important;
+  }
+}
+.swatch .description .value {
   will-change: auto;
   pointer-events: none;
   visibility: hidden;
   opacity: 0;
+  color: #667799;
+  white-space: nowrap;
+}
+.swatch .description .name {
+  color: #29303d;
+  margin-right: 4px;
+}
+.swatch:hover .description .value {
+  will-change: auto;
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
 }
 
 .sample {
-  box-shadow: 0 0 0 1px rgba(41, 48, 61, 0.2);
+  box-shadow: 0 1px 2px rgba(20, 24, 31, 0.4);
   flex-grow: 1;
+  border-radius: 8px;
 }
 @supports not (aspect-ratio: 0) {
   .sample {

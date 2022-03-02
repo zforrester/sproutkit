@@ -22,8 +22,17 @@ body {
     width: 100%;
 
     .hue {
-        width: 1%;
-        flex-grow: 1;
+        width: 10%;
+
+        @include mq(screen('large')) {
+            width: 8%;
+            flex-grow: 1;
+        }
+
+        @include mq(screen('xxx-large')) {
+            width: 1%;
+            flex-grow: 1;
+        }
     }
 
     h3 {
@@ -38,29 +47,62 @@ body {
     list-style: none;
     display: flex;
     flex-direction: column;
+    padding: space(0.5);
     // flex-wrap: wrap;
     // width: 100%;
     flex-grow: 1;
+    pointer-events: none;
 }
 
 .swatch {
     flex-grow: 1;
     position: relative;
+    pointer-events: auto;
     // width: 100%;
-    display: flex;
+    // display: flex;
 
-    .name,
-    .value {
-        position: absolute;
-        @include show('off');
+    .description {
+        position: relative;
+        display: flex;
+        padding: space(1) 0;
+        line-height: line-height('single');
+
+        .name,
+        .value {
+            @include font(8, 'semi-bold');
+            @include transition;
+            line-height: line-height('single');
+            display: block;
+        }
+
+        .value {
+            // position: absolute;
+            // z-index: 1000;
+            @include show('off');
+            color: color('gray-500');
+            white-space: nowrap;
+            // left: 0;
+        }
+
+        .name {
+            color: color('gray-800');
+            margin-right: space(0.5);
+        }
+    }
+
+    &:hover .description {
+        .value {
+            @include show('on');
+        }
     }
 }
 
 .sample {
     @include aspect-ratio(16, 9);
     // width: 100%;
-    box-shadow: shadowLine();
+    box-shadow: shadow('drop-1');
     flex-grow: 1;
+    border-radius: radius('1');
     // min-height: space(5);
 }
 
