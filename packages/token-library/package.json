@@ -1,0 +1,36 @@
+{
+    "name": "sproutkit",
+    "version": "1.0.0",
+    "description": "Atomic Token SCSS Framework",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "scss": "sass --watch scss:css"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zforrester/sproutkit.git"
+    },
+    "keywords": [
+        "SCSS",
+        "components",
+        "Design",
+        "System",
+        "Component",
+        "Guide",
+        "Style",
+        "Guide",
+        "Tokens",
+        "Library"
+    ],
+    "author": "Zach Forrester",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/zforrester/sproutkit/issues"
+    },
+    "homepage": "https://github.com/zforrester/sproutkit#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.13",
+        "sass": "^1.45.0"
+    }
+}
