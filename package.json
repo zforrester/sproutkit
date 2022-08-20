@@ -1,0 +1,31 @@
+{
+    "name": "sproutkit",
+    "description": "UI & Token Library",
+    "author": {
+        "name": "Zach Forrester",
+        "email": "zach.forrester@gmail.com",
+        "url": "https://www.zachforrester.me"
+    },
+    "version": "0.0.0",
+    "private": true,
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ],
+    "scripts": {
+        "build": "turbo run build",
+        "dev": "turbo run dev --parallel",
+        "lint": "turbo run lint",
+        "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    },
+    "devDependencies": {
+        "eslint-config-custom": "*",
+        "prettier": "^2.7.1",
+        "turbo": "latest"
+    },
+    "engines": {
+        "npm": ">=7.0.0",
+        "node": ">=14.0.0"
+    },
+    "packageManager": "npm@8.1.2"
+}
