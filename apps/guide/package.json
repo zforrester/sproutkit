@@ -11,6 +11,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^1.6.15"
+    "astro": "^1.6.15",
+    "@sproutkit/componentlibrary": "*",
+    "@sproutkit/token-library": "*"
   }
 }

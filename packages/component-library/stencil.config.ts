@@ -1,6 +1,7 @@
 import { Config } from '@stencil/core'
 
 import { sass } from '@stencil/sass'
+// import tokens from '@sproutkit/token-library'
 import { inlineSvg } from 'stencil-inline-svg'
 
 export const config: Config = {
