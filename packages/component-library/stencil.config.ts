@@ -23,7 +23,7 @@ export const config: Config = {
   ],
   plugins: [
     sass({
-      // injectGlobalPaths: ['../../token-library/scss/main'],
+      injectGlobalPaths: ['../token-library/scss/library/_index.scss'],
     }),
     inlineSvg(),
   ],
