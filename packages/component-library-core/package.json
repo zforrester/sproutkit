@@ -1,7 +1,7 @@
 {
-  "name": "@sproutkit/component-library",
+  "name": "@sproutkit/component-library-core",
   "version": "0.0.1",
-  "description": "UI Component Library",
+  "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "es2015": "dist/esm/index.mjs",
@@ -9,7 +9,7 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/component-library/component-library.esm.js",
+  "unpkg": "dist/core-library/core-library.esm.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/ionic-team/stencil-component-starter.git"
@@ -23,19 +23,18 @@
     "dev": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "lint": "eslint *.ts*",
     "generate": "stencil generate"
   },
   "dependencies": {
     "@stencil/core": "^2.20.0",
-    "@stencil/sass": "^2.0.1",
-    "@sproutkit/token-library": "*"
+    "@stencil/react-output-target": "^0.3.1"
   },
   "devDependencies": {
+    "@stencil/sass": "^2.0.1",
     "@types/jest": "^27.0.3",
     "jest": "^27.4.5",
     "jest-cli": "^27.4.5",
-    "puppeteer": "^16.2.0",
+    "puppeteer": "^19.4.0",
     "stencil-inline-svg": "^1.1.0"
   },
   "license": "MIT"

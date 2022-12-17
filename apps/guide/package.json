@@ -12,7 +12,11 @@
   },
   "dependencies": {
     "astro": "^1.6.15",
-    "@sproutkit/componentlibrary": "*",
-    "@sproutkit/token-library": "*"
+    "@sproutkit/component-library-react": "^0.0.1"
+  },
+  "devDependencies": {
+    "@astrojs/react": "^1.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

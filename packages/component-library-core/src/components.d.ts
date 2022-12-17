@@ -14,11 +14,11 @@ export namespace Components {
         /**
           * The last name
          */
-        "last"?: string;
+        "last": string;
         /**
           * The middle name
          */
-        "middle"?: string;
+        "middle": string;
     }
 }
 declare global {
@@ -37,7 +37,7 @@ declare namespace LocalJSX {
         /**
           * The first name
          */
-        "first": string;
+        "first"?: string;
         /**
           * The last name
          */
