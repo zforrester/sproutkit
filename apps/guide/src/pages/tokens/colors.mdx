@@ -1,0 +1,21 @@
+---
+layout: '../../layouts/MainView.astro'
+title: 'Colors'
+description: 'Intro'
+---
+
+# {frontmatter.title}
+
+## Set up
+
+Colors are defined in `tokens/colors.json`. By default, we have created a large list of colours, seperated by shade, but you can overwrite these values, replace the `$colors` list entirely, or extend it with your own definitions.
+
+## Usage
+
+Color values can be accessed by using the `color()` SCSS function, defined in `helpers/_colors.scss`. The function can receive two arguments, the `name` of the color, and the `opacity` value, from `0.0` to `1.0`.
+
+For example
+
+```
+background-color: color('blue-800', .5)
+```

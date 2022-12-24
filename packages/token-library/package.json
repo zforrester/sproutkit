@@ -4,7 +4,9 @@
   "description": "Atomic Token SCSS Framework",
   "main": "scss/main",
   "scripts": {
-    "dev": "sass --watch scss:css"
+    "dev": "sass --watch scss:css & tokenWatch",
+    "tokenWatch": "npm-watch",
+    "tokenImport": "node scripts/data-import.js"
   },
   "repository": {
     "type": "git",
@@ -29,7 +31,17 @@
   },
   "homepage": "https://github.com/zforrester/sproutkit#readme",
   "devDependencies": {
+    "json2scss-map": "^1.5.0",
     "nodemon": "^2.0.13",
+    "npm-watch": "^0.11.0",
     "sass": "^1.45.0"
+  },
+  "watch": {
+    "tokenImport": {
+      "patterns": [
+        "tokens"
+      ],
+      "extensions": "json"
+    }
   }
 }

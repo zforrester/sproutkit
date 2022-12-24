@@ -1,27 +1,5 @@
 ---
-import Body from '../layouts/Body.astro'
-
-// import { SproutkitButton } from '../../../../packages/component-library-react'
-
-// import { SproutkitButton } from '@sproutkit/component-library-react'
-
-import { MyComponent } from '@sproutkit/component-library-react'
+import About from './overview/about.astro'
 ---
 
-<Body title='Welcome to Astro.'>
-  <main>
-    <h1>Welcome to <span class='text-gradient'>Astro</span></h1>
-    <p class='instructions'>
-      To get started, open the directory <code>src/pages</code> in your project.<br />
-      <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-
-      <MyComponent first='dsdsjidfsjdskmfdkfjkdds' last='fd' client:load/>
-    </p>
-  </main>
-</Body>
-
-<style lang='scss'>
-  main {
-    background-color: color('blue-100');
-  }
-</style>
+<About />

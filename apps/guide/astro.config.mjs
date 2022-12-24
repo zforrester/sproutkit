@@ -2,9 +2,11 @@ import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
 
 // https://astro.build/config
-export default defineConfig({
-  integrations: [react()],
+import mdx from '@astrojs/mdx'
 
+// https://astro.build/config
+export default defineConfig({
+  integrations: [react(), mdx()],
   vite: {
     css: {
       preprocessorOptions: {
@@ -13,5 +15,9 @@ export default defineConfig({
         },
       },
     },
+  },
+  markdown: {
+    // Can be 'shiki' (default), 'prism' or false to disable highlighting
+    syntaxHighlight: 'prism',
   },
 })

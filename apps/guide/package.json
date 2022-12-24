@@ -4,15 +4,17 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^0.13.0",
+    "@sproutkit/component-library-react": "^0.0.1",
     "astro": "^1.6.15",
-    "@sproutkit/component-library-react": "^0.0.1"
+    "prettier-plugin-astro": "^0.7.0"
   },
   "devDependencies": {
     "@astrojs/react": "^1.2.2",
