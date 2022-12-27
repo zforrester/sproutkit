@@ -4,7 +4,7 @@ title: 'Colors'
 description: 'Intro'
 ---
 
-# {frontmatter.title}
+import ColorPalette from '@components/ColorPalette.astro'
 
 ## Set up
 
@@ -14,8 +14,14 @@ Colors are defined in `tokens/colors.json`. By default, we have created a large 
 
 Color values can be accessed by using the `color()` SCSS function, defined in `helpers/_colors.scss`. The function can receive two arguments, the `name` of the color, and the `opacity` value, from `0.0` to `1.0`.
 
-For example
+For example:
 
 ```
-background-color: color('blue-800', .5)
+background-color: color('blue-500', .5);
+border: 1px solid color('blue-700');
+background-image: linear-gradient(to bottom, color(aqua-400, .2), color(indigo-600, .2);
 ```
+
+## Full Color Palette
+
+<ColorPalette />

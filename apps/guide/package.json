@@ -13,11 +13,12 @@
   "dependencies": {
     "@astrojs/mdx": "^0.13.0",
     "@sproutkit/component-library-react": "^0.0.1",
-    "astro": "^1.6.15",
-    "prettier-plugin-astro": "^0.7.0"
+    "astro": "^1.6.15"
   },
   "devDependencies": {
     "@astrojs/react": "^1.2.2",
+    "prettier": "^2.8.1",
+    "prettier-plugin-astro": "^0.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

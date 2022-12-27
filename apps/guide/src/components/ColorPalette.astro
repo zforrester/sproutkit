@@ -1,0 +1,78 @@
+---
+import colors from '@src/data/colors.json'
+import Swatch from '@components/Swatch.astro'
+
+const colorPalette = Object.entries(colors)
+---
+
+<div class='controls'>
+  <label for='layout'>Layout</label>
+  <input type='checkbox' id='layout' name='layout' />
+</div>
+
+<div class='color-palette'>
+  {
+    colorPalette.map(color => {
+      if (typeof color[1] === 'string') {
+        console.log(color[1])
+        return
+      }
+
+      const shades = Object.entries(color[1])
+      // console.log(shades);
+      return (
+        <div class='palette'>
+          <ul class='shades'>
+            {shades.map(shade => (
+              <li>
+                <Swatch name={`${color[0]}-${shade[0]}`} value={shade[1]} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    })
+  }
+</div>
+
+<style lang='scss'>
+  input {
+    appearance: unset;
+  }
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .color-palette {
+    display: flex;
+    flex-direction: row;
+    // flex-wrap: wrap;
+  }
+
+  .palette {
+    flex-grow: 1;
+    // min-width: 15%;
+  }
+
+  .shades {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    li {
+      flex-grow: 1;
+    }
+  }
+
+  .controls:has(input:checked) ~ .color-palette {
+    flex-direction: column;
+
+    .shades {
+      flex-direction: row;
+    }
+  }
+</style>

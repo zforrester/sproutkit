@@ -1,18 +1,34 @@
 ---
 export interface Props {
-	name: string;
-	value: string;
+  name: string
+  value: string
 }
 
-const { name, value } = Astro.props;
+const { name, value } = Astro.props
 ---
 
-<li class="link-card">
-	<p>
-		<span>{name}</span>
-		<span>{value}</span>
-	</p>
-</li>
-<style>
+<div class='shade'>
+  <div class='preview' style={`background-color: ${value}`}></div>
+  <dl class='description'>
+    <dt class='name'>{name}</dt>
+    <dd class='value'>{value}</dd>
+  </dl>
+</div>
 
+<style lang='scss'>
+  .shade {
+    // @include debug;
+    display: flex;
+    width: 100%;
+    // flex-direction: column;
+  }
+  .preview {
+    height: space(4);
+    // @include aspect-ratio(3, 2);
+    width: 100%;
+  }
+
+  .description {
+    display: none;
+  }
 </style>
