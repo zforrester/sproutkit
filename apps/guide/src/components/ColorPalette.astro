@@ -8,6 +8,9 @@ const colorPalette = Object.entries(colors)
 <div class='controls'>
   <label for='layout'>Layout</label>
   <input type='checkbox' id='layout' name='layout' />
+
+  <label for='showLabels'>Show Labels</label>
+  <input type='checkbox' id='showLabels' name='showLabels' />
 </div>
 
 <div class='color-palette'>
@@ -22,6 +25,7 @@ const colorPalette = Object.entries(colors)
       // console.log(shades);
       return (
         <div class='palette'>
+          <p class='label'>{color[0]}</p>
           <ul class='shades'>
             {shades.map(shade => (
               <li>
@@ -50,12 +54,12 @@ const colorPalette = Object.entries(colors)
   .color-palette {
     display: flex;
     flex-direction: row;
-    // flex-wrap: wrap;
+    flex-wrap: wrap;
   }
 
   .palette {
     flex-grow: 1;
-    // min-width: 15%;
+    flex-basis: clamp(80px, 14%, 240px);
   }
 
   .shades {
@@ -68,11 +72,27 @@ const colorPalette = Object.entries(colors)
     }
   }
 
-  .controls:has(input:checked) ~ .color-palette {
+  .label {
+    @include transition();
+    @include show(on);
+    max-height: space(3);
+  }
+
+  .controls:has(#layout:checked) ~ .color-palette {
     flex-direction: column;
+    flex-wrap: nowrap;
 
     .shades {
       flex-direction: row;
+    }
+  }
+
+  .controls:has(#showLabels:checked) ~ .color-palette {
+    .label {
+      max-height: 0;
+      @include show(off);
+      margin: 0;
+      transform: translate3d(0, -50%, 0);
     }
   }
 </style>

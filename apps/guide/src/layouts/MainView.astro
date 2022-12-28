@@ -11,6 +11,9 @@ const { frontmatter, headings } = Astro.props
 
 <Body title={frontmatter.title}>
   <a class='skip-to-content-anchor' href='#main-content'>Skip to main content</a>
+  <div class='topbar'>
+    <div class='logo-container'>Sproutkit</div>
+  </div>
   <nav class='main-nav'>
     <Nav />
   </nav>
@@ -54,6 +57,7 @@ const { frontmatter, headings } = Astro.props
 
   body {
     display: flex;
+    // flex-wrap: wrap;
     flex-grow: 1;
     max-width: 100vw;
     min-width: 0;
@@ -71,20 +75,39 @@ const { frontmatter, headings } = Astro.props
     flex-shrink: 1;
     flex-wrap: wrap;
     padding: clamp(space(2), 5vw, space(10));
+    width: 80%;
 
     // @include debug;
     overflow-y: auto;
     overflow-x: hidden;
   }
 
+  .topbar {
+    width: 100%;
+    padding: space(2) space(3);
+    // box-shadow: 0 1px 0 color('black', 0.25);
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: color('white');
+
+    .logo-container {
+      @include font(16, 'bold');
+      color: color('black');
+    }
+  }
+
   header {
     margin: clamp(space(2), 5vw, space(10));
     padding-bottom: space(5);
     width: 100%;
-    box-shadow: 0 1px 0 color('gray-500', 0.2);
+    box-shadow: 0 1px 0 color('cool-gray-500', 0.2);
     h1 {
       @include font(56, 'bold');
-      color: color('gray-800');
+      line-height: line-height('small');
+      color: color('cool-gray-800');
     }
   }
 
@@ -95,14 +118,14 @@ const { frontmatter, headings } = Astro.props
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    color: color('gray-700');
+    color: color('cool-gray-700');
     padding: 0 clamp(space(2), 5vw, space(10));
     @include font(14, 'normal');
 
     h1,
     h2,
     h3 {
-      color: color('gray-800');
+      color: color('cool-gray-800');
     }
 
     h1 {
@@ -124,10 +147,10 @@ const { frontmatter, headings } = Astro.props
     width: 100%;
     overflow: auto;
     min-width: 0;
-    background-color: color('gray-800');
-    padding: space(2) space(3);
+    background-color: color('cool-gray-700');
+    padding: space(3) space(3);
     border-radius: radius(1);
-    color: color('gray-200');
+    color: color('cool-gray-200');
     line-height: 2;
     position: relative;
     margin: space(2) 0;
@@ -142,7 +165,7 @@ const { frontmatter, headings } = Astro.props
       top: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(90deg, color('gray-800', 0), color('gray-800'));
+      background: linear-gradient(90deg, color('cool-gray-800', 0), color('cool-gray-800'));
       width: space(5);
     }
   }
@@ -158,7 +181,7 @@ const { frontmatter, headings } = Astro.props
 
     &.main-nav {
       overflow: auto;
-      background-color: color('gray-100');
+      background-color: color('cool-gray-100');
       padding: clamp(space(2), 2vw, space(6));
       flex-grow: 1;
     }
@@ -176,7 +199,7 @@ const { frontmatter, headings } = Astro.props
     h4 {
       @include font(14, 'bold');
       @include font(12, 'semi-bold');
-      color: color('gray-800');
+      color: color('cool-gray-800');
       padding: space(0.5);
     }
     .headings {
@@ -192,7 +215,7 @@ const { frontmatter, headings } = Astro.props
       }
       h2 {
         @include font(12, 'semi-bold');
-        color: color('gray-800');
+        color: color('cool-gray-800');
         padding: space(0.5);
         background-color: white;
         position: sticky;
@@ -206,7 +229,7 @@ const { frontmatter, headings } = Astro.props
       a {
         @include font(14, 'medium');
         text-decoration: none;
-        color: color('gray-600');
+        color: color('cool-gray-600');
         padding: space(0.5) space(1.5);
       }
     }

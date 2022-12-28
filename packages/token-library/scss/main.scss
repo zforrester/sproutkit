@@ -1,2 +1,7 @@
 @import 'library/_index';
 // @import './reset.scss';
+
+body {
+  background-color: newcolor('rd-500');
+  background-color: newcolor('black');
+}

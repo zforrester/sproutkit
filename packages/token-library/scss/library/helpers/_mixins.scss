@@ -244,7 +244,8 @@
 }
 
 @function contains($string, $find) {
-  @if (str-index($string, $find)) {
+  $string: '#{$string}';
+  @if (string.index($string, $find)) {
     @return true;
   } @else {
     @return false;
