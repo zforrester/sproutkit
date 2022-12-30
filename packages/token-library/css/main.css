@@ -1,6 +1,6 @@
 body {
-  background-color: "WARN: Invalid Color";
-  background-color: black;
+  background-color: newcolor("rd-500");
+  background-color: newcolor("black");
 }
 
 /*# sourceMappingURL=main.css.map */

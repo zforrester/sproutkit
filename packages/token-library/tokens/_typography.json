@@ -1,0 +1,52 @@
+{
+  "families": {
+    "primary": "sans-serif",
+    "secondary": "serif",
+    "default": ["system-ui"]
+  },
+  "sizes": {
+    "6": "6px",
+    "8": "8px",
+    "10": "10px",
+    "12": "12px",
+    "14": "14px",
+    "15": "15px",
+    "16": "16px",
+    "18": "18px",
+    "20": "20px",
+    "24": "24px",
+    "32": "32px",
+    "40": "40px",
+    "48": "48px",
+    "56": "56px",
+    "64": "64px",
+    "80": "80px",
+    "96": "96px",
+    "120": "120px",
+    "136": "136px"
+  },
+  "weights": {
+    "thin": "100",
+    "extra-light": "200",
+    "light": "300",
+    "regular": "400",
+    "medium": "500",
+    "semi-bold": "600",
+    "bold": "700",
+    "extra-bold": "800",
+    "black": "900"
+  },
+  "line-heights": {
+    "single": "1",
+    "small": "1.2",
+    "normal": "1.6",
+    "large": "1.8"
+  },
+  "letter-spacing": {
+    "x-tight": "-0.05em",
+    "tight": "-0.05em",
+    "normal": "normal",
+    "loose": "0.05em",
+    "x-loose": "0.1em"
+  }
+}
