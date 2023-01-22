@@ -4,7 +4,7 @@
   "description": "Atomic Token SCSS Framework",
   "main": "scss/main",
   "scripts": {
-    "dev": "sass --watch scss:css & tokenWatch",
+    "dev": "sass --watch scss:css & tokenImport & tokenWatch",
     "tokenWatch": "npm-watch",
     "tokenImport": "node scripts/data-import.js"
   },

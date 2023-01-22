@@ -1,0 +1,84 @@
+---
+export interface Frontmatter {
+  title: string
+  description?: string
+}
+
+const overviewPages = await Astro.glob('../pages/overview/*')
+const tokenPages = await Astro.glob('../pages/tokens/*')
+---
+
+<nav class='article-nav'>
+  <div class='nav-content'>
+    <section>
+      <h4>Introduction</h4>
+      <ul>
+        {
+          overviewPages.map(page => (
+            <li>
+              <a href={page.url}>{page.frontmatter.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section>
+      <h4>Token Library</h4>
+      <ul>
+        {
+          tokenPages.map(page => (
+            <li>
+              <a href={page.url}>{page.frontmatter.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</nav>
+
+<style lang='scss'>
+  .article-nav {
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    background-color: color('neutral-gray-50');
+    width: clamp(240px, 5vw, 320px);
+  }
+
+  .nav-content {
+    position: sticky;
+    top: space(10);
+  }
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  section {
+    margin: 0;
+    padding: space(2);
+  }
+
+  h4 {
+    @include font(12, 'semi-bold');
+    color: color('cool-gray-800');
+    padding: space(0.5);
+    position: sticky;
+    top: 0;
+  }
+
+  li {
+    padding: space(0.5);
+  }
+
+  a {
+    @include font(14, 'medium');
+    text-decoration: none;
+    color: color('cool-gray-600');
+    padding: space(0.5) space(1.5);
+  }
+</style>

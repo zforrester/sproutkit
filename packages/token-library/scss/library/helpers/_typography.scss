@@ -1,14 +1,21 @@
 @use 'sass:string';
 @use 'sass:map';
 @use 'sass:list';
+@import '../tokens/_typography.scss';
 
 //-------------------------------------------------------------------
 // Typography Helper Functions
 //-------------------------------------------------------------------
+$font-families: map-get($typography, 'families');
+$font-sizes: map-get($typography, 'sizes');
+$font-weights: map-get($typography, 'weights');
+$line-heights: map-get($typography, 'line-heights');
+$letter-spacing: map-get($typography, 'letter-spacing');
+
 @function font-family($family) {
   @if map-has-key($font-families, $family) {
     $family: map-get($font-families, $family);
-    @return $family;
+    @return string.unquote($family);
   } @else {
     @warn errorMessage($family, $font-families, 'tokens/_typography.scss');
     @return 'WARNING: Invalid Font Family';
@@ -16,6 +23,8 @@
 }
 
 @function font-size($size) {
+  $size: '#{$size}';
+
   @if map-has-key($font-sizes, $size) {
     $size: map-get($font-sizes, $size);
     @return $size;
@@ -27,7 +36,12 @@
 
 @function font-weight($weight: regular) {
   @if map-has-key($font-weights, $weight) {
-    @return map-get($font-weights, $weight);
+    $font-weight: map-get($font-weights, $weight);
+    @if type-of($font-weight) == 'string' {
+      @return string.unquote($font-weight);
+    } @else {
+      @return $font-weight;
+    }
   } @else {
     @warn errorMessage($weight, $font-weights, 'tokens/_typography.scss');
     @return 'WARNING: Invalid Font Weight';
@@ -54,35 +68,11 @@
   }
 }
 
-@mixin font-set($set: '') {
-  @debug $set;
-
-  @if map-has-key($font-settings, $set) {
-    $set: map-get($font-settings, $set);
-    @include font($set...);
-  }
-}
-
-@mixin font-set-weight($set: '') {
-  @debug $set;
-
-  @if map-has-key($font-settings, $set) {
-    $set: map-get($font-settings, $set);
-    @include get-font-set-weight($set...);
-  }
-}
-
-@mixin get-font-set-weight($size: '', $weight: '', $family: list.nth(map-keys($font-families), 1), $line-height: 'normal') {
-  @if ($weight) {
-    font-weight: font-weight($weight);
-  }
-}
-
-@mixin font($size: '', $weight: '', $family: list.nth(map-keys($font-families), 1), $line-height: 'normal', $letter-spacing: 'normal', $properties...) {
-  @debug $family;
-
+@mixin font($size, $weight: null, $family: list.nth(map-keys($font-families), 1), $line-height: null, $letter-spacing: null, $properties...) {
   @if ($family) {
     font-family: font-family($family);
+  } @else {
+    font-family: var(--font-family-primary);
   }
   @if ($size) {
     font-size: font-size($size);
@@ -96,7 +86,6 @@
   @if ($letter-spacing) {
     letter-spacing: letter-spacing($letter-spacing);
   }
-
   @each $property in $properties {
     @if $property == 'capitalize' {
       text-transform: capitalize;

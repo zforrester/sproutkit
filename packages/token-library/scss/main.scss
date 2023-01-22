@@ -4,4 +4,11 @@
 body {
   background-color: newcolor('rd-500');
   background-color: newcolor('black');
+  //   font-size: font-size(12);
+  //   font-family: font-family('primary');
+  @include font(12);
+}
+
+:root {
+  --font-family-primary: font-family('primary');
 }

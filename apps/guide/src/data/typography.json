@@ -1,6 +1,6 @@
 {
   "families": {
-    "primary": "sans-serif",
+    "primary": "system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
     "secondary": "serif",
     "default": ["system-ui"]
   },
@@ -26,15 +26,15 @@
     "136": "136px"
   },
   "weights": {
-    "thin": "100",
-    "extra-light": "200",
-    "light": "300",
-    "regular": "400",
-    "medium": "500",
-    "semi-bold": "600",
-    "bold": "700",
-    "extra-bold": "800",
-    "black": "900"
+    "thin": 100,
+    "extra-light": 200,
+    "light": 300,
+    "regular": 400,
+    "medium": 500,
+    "semi-bold": 600,
+    "bold": 700,
+    "extra-bold": 800,
+    "black": 900
   },
   "line-heights": {
     "single": "1",

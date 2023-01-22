@@ -1,0 +1,215 @@
+---
+import MainView from '@src/layouts/MainView.astro'
+
+const { frontmatter, headings } = Astro.props
+---
+
+<MainView title={frontmatter.title}>
+  <article>
+    <header>
+      <h1>{frontmatter.title}</h1>
+    </header>
+
+    <div id='main-content'>
+      <section>
+        <slot />
+      </section>
+    </div>
+
+    {
+      headings?.length > 0 ? (
+        <aside>
+          <h4>On This Page</h4>
+          <nav class='headings'>
+            <ul>
+              {headings.map((heading: any) =>
+                heading.depth > 1 ? (
+                  <li>
+                    <a href={`#${heading.slug}`}>{heading.text}</a>
+                  </li>
+                ) : null
+              )}
+            </ul>
+          </nav>
+        </aside>
+      ) : null
+    }
+  </article>
+
+  <style lang='scss'>
+    article {
+      @include font(14, 'regular');
+      // display: flex;
+      // flex-wrap: wrap;
+      padding: 0 clamp(space(2), 5vw, space(10));
+      width: 60%;
+      flex-grow: 1;
+      // display: grid;
+      // grid-template: 'article aside';
+
+      // header {
+      //   width: 100%;
+      // }
+
+      // section {
+      //   width: 80%;
+      // }
+    }
+
+    header {
+      margin: clamp(space(2), 5vw, space(10));
+      padding-bottom: space(5);
+      width: 100%;
+      box-shadow: 0 1px 0 color('cool-gray-500', 0.2);
+
+      h1 {
+        @include font(56, 'bold');
+        line-height: line-height('small');
+        color: color('cool-gray-800');
+      }
+    }
+
+    section {
+      padding: 0 clamp(space(2), 5vw, space(10));
+      flex-grow: 1;
+      width: 80%;
+      flex-shrink: 1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      color: color('cool-gray-700');
+      padding: 0 clamp(space(2), 5vw, space(10));
+      @include font(14, 'regular');
+    }
+
+    aside {
+      width: 20%;
+      min-width: 120px;
+      flex-grow: 1;
+      flex-shrink: 0;
+      height: 100%;
+      position: sticky;
+      top: space(12);
+      // max-height: 240px;
+
+      h4 {
+        @include font(14, 'bold');
+        @include font(12, 'semi-bold');
+        color: color('cool-gray-800');
+        padding: space(0.5);
+      }
+      .headings {
+        ul,
+        li {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        section {
+          margin: 0;
+          padding: space(2);
+        }
+        h2 {
+          @include font(12, 'semi-bold');
+          color: color('cool-gray-800');
+          padding: space(0.5);
+          background-color: white;
+          position: sticky;
+          top: 0;
+        }
+
+        li {
+          padding: space(0.5);
+        }
+
+        a {
+          @include font(14, 'medium');
+          text-decoration: none;
+          color: color('cool-gray-600');
+          padding: space(0.5) space(1.5);
+        }
+      }
+    }
+  </style>
+
+  <style is:global lang='scss'>
+    section {
+      h1,
+      h2,
+      h3 {
+        color: color('cool-gray-800');
+      }
+
+      h1 {
+        @include font(48, 'bold');
+      }
+
+      h2 {
+        @include font(32, 'bold');
+      }
+
+      h3 {
+        @include font(24, 'bold');
+      }
+
+      p {
+        margin: space(2) 0;
+      }
+
+      * + h2 {
+        margin-top: space(2);
+      }
+
+      pre {
+        width: 100%;
+        overflow: auto;
+        min-width: 0;
+        background-color: color('cool-gray-800');
+        padding: space(3) space(3);
+        border-radius: radius(1);
+        color: color('cool-gray-100');
+        line-height: 2;
+        position: relative;
+        margin: space(2) 0;
+
+        p + & {
+          margin-top: 0;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(90deg, color('cool-gray-800', 0), color('cool-gray-700'));
+          background-position: right center;
+          width: space(5);
+        }
+      }
+
+      code {
+        p > & {
+          background-color: color('blue-200', 0.2);
+          color: color('blue-600');
+          padding: space(0.25) space(1);
+          border-radius: 4px;
+        }
+      }
+
+      nav {
+        flex-shrink: 0;
+        width: clamp(240px, 20vw, 320px);
+        position: sticky;
+        top: 0;
+
+        &.main-nav {
+          overflow: auto;
+          background-color: color('cool-gray-50');
+          padding: clamp(space(2), 2vw, space(6));
+          flex-grow: 1;
+        }
+      }
+    }
+  </style>
+</MainView>
