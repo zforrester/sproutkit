@@ -1,0 +1,15 @@
+---
+import typography from '@src/data/typography.json'
+
+const fontFamilies = Object.entries(typography.families)
+---
+
+<div class='preview'>
+  <ul>
+    {
+      fontFamilies.map(fontFamily => {
+        return <li>{fontFamily}</li>
+      })
+    }
+  </ul>
+</div>

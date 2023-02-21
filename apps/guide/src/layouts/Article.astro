@@ -1,6 +1,6 @@
 ---
 import MainView from '@src/layouts/MainView.astro'
-
+import ArticleSidebar from '@src/components/ArticleSidebar.astro'
 const { frontmatter, headings } = Astro.props
 ---
 
@@ -10,125 +10,72 @@ const { frontmatter, headings } = Astro.props
       <h1>{frontmatter.title}</h1>
     </header>
 
-    <div id='main-content'>
+    <div class='content-wrapper'>
       <section>
         <slot />
       </section>
-    </div>
 
-    {
-      headings?.length > 0 ? (
-        <aside>
-          <h4>On This Page</h4>
-          <nav class='headings'>
-            <ul>
-              {headings.map((heading: any) =>
-                heading.depth > 1 ? (
-                  <li>
-                    <a href={`#${heading.slug}`}>{heading.text}</a>
-                  </li>
-                ) : null
-              )}
-            </ul>
-          </nav>
-        </aside>
-      ) : null
-    }
+      <ArticleSidebar headings={headings} />
+    </div>
   </article>
 
   <style lang='scss'>
     article {
       @include font(14, 'regular');
-      // display: flex;
-      // flex-wrap: wrap;
-      padding: 0 clamp(space(2), 5vw, space(10));
-      width: 60%;
+      line-height: line-height('large');
+      min-height: 0;
+      min-width: 0;
+      width: 80%;
       flex-grow: 1;
-      // display: grid;
-      // grid-template: 'article aside';
+      padding: clamp(space(2), 5vw, space(20)) clamp(space(2), 10vw, space(30));
 
-      // header {
-      //   width: 100%;
-      // }
-
-      // section {
-      //   width: 80%;
-      // }
-    }
-
-    header {
-      margin: clamp(space(2), 5vw, space(10));
-      padding-bottom: space(5);
-      width: 100%;
-      box-shadow: 0 1px 0 color('cool-gray-500', 0.2);
-
-      h1 {
-        @include font(56, 'bold');
-        line-height: line-height('small');
-        color: color('cool-gray-800');
+      &::before {
+        content: '';
+        position: fixed;
+        height: 200px;
+        left: 0;
+        right: 0;
+        background: linear-gradient(180deg, color('cool-gray-100', 0), color('cool-gray-100'));
+        bottom: 0;
+        z-index: 1;
       }
     }
 
+    header {
+      margin-bottom: clamp(space(2), 5vw, space(10));
+      padding-bottom: clamp(space(2), 5vw, space(10));
+      box-shadow: 0 1px 0 color('cool-gray-500', 0.2);
+      width: 100%;
+      h1 {
+        line-height: line-height('small');
+        color: color('cool-gray-800');
+        text-align: center;
+        // font-family: var(--font-family-secondary);
+        font-weight: font-weight('light');
+        font-size: clamp(font-size(24), 10vw, font-size(96));
+        // text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    }
+
+    .content-wrapper {
+      min-height: 0;
+      min-width: 0;
+      display: flex;
+      flex-wrap: wrap-reverse;
+      gap: clamp(space(2), 5vw, space(20));
+    }
+
     section {
-      padding: 0 clamp(space(2), 5vw, space(10));
       flex-grow: 1;
-      width: 80%;
+      width: 60%;
       flex-shrink: 1;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      color: color('cool-gray-700');
-      padding: 0 clamp(space(2), 5vw, space(10));
+      color: color('cool-gray-500');
       @include font(14, 'regular');
-    }
-
-    aside {
-      width: 20%;
-      min-width: 120px;
-      flex-grow: 1;
-      flex-shrink: 0;
-      height: 100%;
-      position: sticky;
-      top: space(12);
-      // max-height: 240px;
-
-      h4 {
-        @include font(14, 'bold');
-        @include font(12, 'semi-bold');
-        color: color('cool-gray-800');
-        padding: space(0.5);
-      }
-      .headings {
-        ul,
-        li {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-        }
-        section {
-          margin: 0;
-          padding: space(2);
-        }
-        h2 {
-          @include font(12, 'semi-bold');
-          color: color('cool-gray-800');
-          padding: space(0.5);
-          background-color: white;
-          position: sticky;
-          top: 0;
-        }
-
-        li {
-          padding: space(0.5);
-        }
-
-        a {
-          @include font(14, 'medium');
-          text-decoration: none;
-          color: color('cool-gray-600');
-          padding: space(0.5) space(1.5);
-        }
-      }
+      font-family: var(--font-family-secondary);
     }
   </style>
 
@@ -145,7 +92,7 @@ const { frontmatter, headings } = Astro.props
       }
 
       h2 {
-        @include font(32, 'bold');
+        @include font(40, 'medium');
       }
 
       h3 {
@@ -162,39 +109,55 @@ const { frontmatter, headings } = Astro.props
 
       pre {
         width: 100%;
-        overflow: auto;
         min-width: 0;
-        background-color: color('cool-gray-800');
-        padding: space(3) space(3);
-        border-radius: radius(1);
-        color: color('cool-gray-100');
-        line-height: 2;
+        background: linear-gradient(45deg, color('cool-gray-200', 0), color('cool-gray-200', 0.6));
+
+        // background-color: color('cool-gray-100', 0.5);
+        color: color('cool-gray-900');
         position: relative;
         margin: space(2) 0;
+        tab-size: 4;
+        overflow: hidden;
+        display: flex;
 
-        p + & {
-          margin-top: 0;
+        code {
+          overflow: auto;
+          width: 100%;
+          padding: space(3) space(4);
         }
 
         &::before {
           content: '';
+          overflow-anchor: none;
           position: absolute;
           top: 0;
           right: 0;
           bottom: 0;
-          background: linear-gradient(90deg, color('cool-gray-800', 0), color('cool-gray-700'));
+          // border-radius: radius(1);
+          background: linear-gradient(90deg, color('cool-gray-200', 0), color('cool-gray-300', 0.2));
           background-position: right center;
           width: space(5);
         }
       }
 
-      code {
-        p > & {
-          background-color: color('blue-200', 0.2);
-          color: color('blue-600');
-          padding: space(0.25) space(1);
-          border-radius: 4px;
-        }
+      pre code,
+      p code {
+        font-size: 0.85em;
+      }
+      p + pre {
+        margin-top: 0;
+      }
+
+      p > code {
+        background-color: color('magenta-200', 0.1);
+        color: color('violet-600');
+        padding: space(0.25) space(0.5);
+        border-radius: 4px;
+        white-space: nowrap;
+      }
+
+      .preview {
+        margin-top: space(2);
       }
 
       nav {

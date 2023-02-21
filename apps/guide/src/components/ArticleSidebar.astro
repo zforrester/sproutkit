@@ -1,0 +1,88 @@
+---
+const { headings } = Astro.props
+---
+
+{
+  headings?.length > 0 ? (
+    <aside>
+      <h4>On This Page</h4>
+      <nav class='headings'>
+        <ul>
+          {headings.map((heading: any) =>
+            heading.depth > 1 ? (
+              <li>
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              </li>
+            ) : null
+          )}
+        </ul>
+      </nav>
+    </aside>
+  ) : null
+}
+
+<style lang='scss'>
+  aside {
+    width: 20%;
+    flex-grow: 1;
+    min-width: 200px;
+    flex-shrink: 1;
+    // height: 100%;
+    // max-height: 240px;
+    background: linear-gradient(135deg, color('white', 1), color('cool-gray-200', 0) 75%, color('white', 0.2)), linear-gradient(color('white', 1), color('white', 0), color('white', 0.2));
+    border-radius: 4px;
+    padding: space(2);
+    height: 100%;
+    box-shadow: 0 2px 2px color('cool-gray-500', 0.1), 0 40px 64px -40px color('cool-gray-900', 0.4);
+    margin-bottom: auto;
+    z-index: 1;
+
+    @supports (-webkit-backdrop-filter: blur(0)) {
+      -webkit-backdrop-filter: blur(40px) brightness(105%);
+      // backdrop-filter: blur(40px) brightness(100%);
+      // background: linear-gradient(to bottom, color('white', 0.6), color('white', 0.2));
+    }
+
+    @include mq(screen('medium-large')) {
+      position: sticky;
+      top: space(12);
+    }
+  }
+  h4 {
+    @include font(10, 'bold');
+    color: color('cool-gray-800');
+    padding: space(0.5);
+    text-transform: uppercase;
+  }
+  .headings {
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    section {
+      margin: 0;
+      padding: space(2);
+    }
+    h2 {
+      @include font(12, 'semi-bold');
+      color: color('cool-gray-800');
+      padding: space(0.5);
+      background-color: white;
+      position: sticky;
+      top: 0;
+    }
+
+    li {
+      padding: space(0.5);
+    }
+
+    a {
+      @include font(14, 'medium');
+      text-decoration: none;
+      color: color('cool-gray-600');
+      padding: space(0.5) space(1.5);
+    }
+  }
+</style>

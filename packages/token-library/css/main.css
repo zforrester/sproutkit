@@ -1,7 +1,7 @@
 body {
   background-color: newcolor("rd-500");
   background-color: newcolor("black");
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-family: var(--font-family-primary);
   font-size: 12px;
 }
 

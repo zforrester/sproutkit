@@ -1,6 +1,6 @@
 ---
 import Body from '../layouts/Body.astro'
-import ArticleNav from '@src/components/ArticleNav.astro'
+import MainNav from '@src/components/MainNav.astro'
 import TopNav from '@src/components/TopNav.astro'
 import SkipToContent from '@src/components/SkipToContent.astro'
 
@@ -16,9 +16,11 @@ const { frontmatter, content } = Astro.props
   <TopNav />
 
   <main>
-    <ArticleNav />
+    <MainNav />
     <slot />
   </main>
+
+  <div class='background-colors'></div>
 </Body>
 
 <style lang='scss'>
@@ -26,18 +28,12 @@ const { frontmatter, content } = Astro.props
     flex-grow: 1;
     display: flex;
     min-width: 0;
-    flex-shrink: 1;
-    // flex-wrap: wrap;
-    // min-height: 100%;
-    // position: relative;
-    // isolation: isolate;
-    // overflow: auto;
-    // @include debug;
-    min-height: 0;
-    // height: 0;
+    max-width: 100%;
     flex-grow: 1;
     align-self: flex-start;
-    @include debug;
+    height: 100%;
+    min-height: 0;
+    background-color: color('cool-gray-100');
 
     // max-height: calc(100% - 64px);
 
@@ -54,6 +50,18 @@ const { frontmatter, content } = Astro.props
     > nav {
       position: sticky;
       top: 0;
+      min-height: 0;
     }
+  }
+
+  .background-colors {
+    position: fixed;
+    pointer-events: none;
+    @include coordinates;
+    background: radial-gradient(ellipse farthest-corner at 50% 50%, color('white', 1) 50%, color('cool-gray-50', 0) 150%), radial-gradient(ellipse at 60% -50%, color('yellow-200', 1), color('fushia-200', 0)),
+      radial-gradient(ellipse at 120% 60%, color('fushia-200', 1), color('fushia-200', 0)), radial-gradient(ellipse at 50% 120%, color('blue-400', 0.4), color('blue-400', 0.4));
+    opacity: 0;
+    // mix-blend-mode: multiply;
+    z-index: 0;
   }
 </style>

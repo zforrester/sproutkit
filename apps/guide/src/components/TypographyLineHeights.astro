@@ -1,0 +1,15 @@
+---
+import typography from '@src/data/typography.json'
+
+const lineHeights = Object.entries(typography['line-heights'])
+---
+
+<div class='preview'>
+  <ul>
+    {
+      lineHeights.map(lineHeight => {
+        return <li>{lineHeight}</li>
+      })
+    }
+  </ul>
+</div>

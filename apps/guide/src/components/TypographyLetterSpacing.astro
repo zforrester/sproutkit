@@ -1,0 +1,15 @@
+---
+import typography from '@src/data/typography.json'
+
+const letterSpacing = Object.entries(typography['letter-spacing'])
+---
+
+<div class='preview'>
+  <ul>
+    {
+      letterSpacing.map(space => {
+        return <li>{space}</li>
+      })
+    }
+  </ul>
+</div>

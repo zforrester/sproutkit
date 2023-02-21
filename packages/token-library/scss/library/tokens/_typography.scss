@@ -1,6 +1,7 @@
 $typography: (
   "families": (
-    "primary": "system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "primary": "var(--font-family-primary)",
+    "primary-fallback": "system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
     "secondary": "serif",
     "default": ("system-ui",)
   ),
@@ -37,10 +38,10 @@ $typography: (
     "black": 900
   ),
   "line-heights": (
-    "single": "1",
-    "small": "1.2",
-    "normal": "1.6",
-    "large": "1.8"
+    "single": 1,
+    "small": 1.2,
+    "normal": 1.6,
+    "large": 1.8
   ),
   "letter-spacing": (
     "x-tight": "-0.05em",

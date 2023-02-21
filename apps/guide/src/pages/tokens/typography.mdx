@@ -4,6 +4,12 @@ title: 'Typography'
 description: 'Intro'
 ---
 
+import TypographyFontFamilies from '@components/TypographyFontFamilies.astro'
+import TypographyFontSizes from '@components/TypographyFontSizes.astro'
+import TypographyFontWeights from '@components/TypographyFontWeights.astro'
+import TypographyLineHeights from '@components/TypographyLineHeights.astro'
+import TypographyLetterSpacing from '@components/TypographyLetterSpacing.astro'
+
 ## Set up
 
 Typographic properties are defined in `tokens/typography.json`. These propertiers include `sizes`, `families`, `weights`, `line-heights`, and `letter-spacing`. You can modify these property definitions or replace them with your own.
@@ -14,11 +20,11 @@ The properties can accessed by using a function name that matches the CSS proper
 
 ```
 .headline {
-	font-size: font-size()`
-	font-family: font-family()`
-	font-weight: font-weight()`
-	line-height: line-height()`
-	letter-spacing: letter-spacing()`
+	font-size: font-size();
+	font-family: font-family();
+	font-weight: font-weight();
+	line-height: line-height();
+	letter-spacing: letter-spacing();
 }
 ```
 
@@ -37,3 +43,25 @@ Alternatively, there is a `@mixin font()` that provides a short cut for these pr
 	font-family: 'Avenir Next';
 }
 ```
+
+## Tokens
+
+### Font Families
+
+<TypographyFontFamilies />
+
+### Font Sizes
+
+<TypographyFontSizes />
+
+### Font Weights
+
+<TypographyFontWeights />
+
+### Line Heights
+
+<TypographyLineHeights />
+
+### Letter Spacing
+
+<TypographyLetterSpacing />

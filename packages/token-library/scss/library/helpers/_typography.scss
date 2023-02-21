@@ -51,7 +51,11 @@ $letter-spacing: map-get($typography, 'letter-spacing');
 @function line-height($height: 'normal') {
   @if map-has-key($line-heights, $height) {
     $height: map-get($line-heights, $height);
-    @return $height;
+    @if type-of($height) == 'string' {
+      @return string.unquote($height);
+    } @else {
+      @return $height;
+    }
   } @else {
     @warn errorMessage($height, $line-heights, 'tokens/_typography.scss');
     @return 'WARNING: Invalid Line Height';

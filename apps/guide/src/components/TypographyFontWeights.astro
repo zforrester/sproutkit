@@ -1,0 +1,72 @@
+---
+import typography from '@src/data/typography.json'
+
+const fontWeights = Object.entries(typography.weights)
+---
+
+<div class='preview'>
+  <ul>
+    {
+      fontWeights.map(weight => {
+        const name = weight[0]
+        const value = weight[1]
+        return (
+          <li>
+            <div class={`sample font-weight-${value}`}>
+              <span>Aa</span>
+              <span class='value'>{value}</span>
+            </div>
+            <code>
+              font-weight(<span>'{name}'</span>)
+            </code>
+          </li>
+        )
+      })
+    }
+  </ul>
+</div>
+
+<style lang='scss'>
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(space(24), 1fr));
+    gap: space(4) space(2);
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: space(2);
+  }
+
+  .sample {
+    background: color('white');
+    border-radius: 8px;
+    padding: space(4) space(2);
+    box-shadow: 0 2px 2px color('cool-gray-500', 0.1);
+    color: color('cool-gray-900');
+    text-align: center;
+    font-size: font-size(24);
+    font-family: font-family('primary');
+
+    .value {
+      color: color('cool-gray-400');
+    }
+  }
+
+  @for $i from 1 to 9 {
+    .font-weight-#{$i}00 {
+      font-weight: #{$i}00;
+    }
+  }
+
+  code {
+    font-size: font-size(10);
+    background-color: color('magenta-200', 0.1);
+    color: color('violet-600');
+    padding: space(0.25) space(1);
+    border-radius: 4px;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+</style>

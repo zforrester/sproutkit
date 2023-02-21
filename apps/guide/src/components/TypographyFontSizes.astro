@@ -1,0 +1,118 @@
+---
+import typography from '@src/data/typography.json'
+
+const fontSizes = Object.entries(typography.sizes)
+---
+
+<div class='preview'>
+  <ul>
+    {
+      fontSizes.map(fontSize => {
+        const name = fontSize[0]
+        const value = fontSize[1]
+
+        return (
+          <li>
+            <div class={`sample font-size-${value}`} style={{ fontSize: value }}>
+              <span>Aa</span>
+            </div>
+            <code>
+              font-size(<span>{name}</span>)
+            </code>
+          </li>
+        )
+      })
+    }
+  </ul>
+</div>
+
+<style lang='scss'>
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(space(16), 1fr));
+    align-items: end;
+  }
+
+  li {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+
+    // gap: space(2);
+    overflow: hidden;
+    min-width: 0;
+    // border: 0.5px solid color('cool-gray-300');
+    width: 100%;
+    // height: 100%;
+    // @include debug;
+
+    &:nth-last-of-type(-n + 6) {
+      .sample {
+        height: 80px;
+      }
+    }
+
+    &:nth-last-of-type(-n + 2) {
+      .sample {
+        height: 108px;
+      }
+    }
+    &:nth-last-of-type(-n + 1) {
+      grid-column: span 2;
+      .sample {
+        height: 108px;
+      }
+    }
+  }
+
+  .sample {
+    font-weight: font-weight('bold');
+    color: color('cool-gray-900');
+    // text-align: center;
+    background: linear-gradient();
+    min-height: 100%;
+
+    display: flex;
+    height: 40px;
+    align-items: flex-end;
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 8px;
+      height: 1px;
+      background-color: color('blue-200');
+    }
+    span {
+      width: 100%;
+      line-height: 0;
+      position: relative;
+    }
+
+    // span {
+    //   // line-height: 0;
+    //   height: 120px;
+    //   display: block;
+    // }
+  }
+
+  // @for $i from 1 to 9 {
+  //   .font-size-#{$i}00 {
+  //     font-size: #{$i}00;
+  //   }
+  // }
+
+  code {
+    font-size: font-size(10);
+    background-color: color('magenta-200', 0.1);
+    color: color('violet-600');
+    padding: space(0.25) space(1);
+    border-radius: 4px;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+</style>

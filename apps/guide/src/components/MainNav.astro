@@ -8,7 +8,7 @@ const overviewPages = await Astro.glob('../pages/overview/*')
 const tokenPages = await Astro.glob('../pages/tokens/*')
 ---
 
-<nav class='article-nav'>
+<nav class='main-nav'>
   <div class='nav-content'>
     <section>
       <h4>Introduction</h4>
@@ -38,17 +38,33 @@ const tokenPages = await Astro.glob('../pages/tokens/*')
 </nav>
 
 <style lang='scss'>
-  .article-nav {
+  .main-nav {
     position: sticky;
-    top: 0;
-    max-height: 100vh;
-    background-color: color('neutral-gray-50');
-    width: clamp(240px, 5vw, 320px);
+    top: space(9);
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+    // max-height: 100vh;
+    // background: linear-gradient(20deg, color('cool-gray-50', 0) 60%, color('cool-gray-100'));
+    width: clamp(240px, 2vw, 320px);
+    flex-shrink: 0;
+    flex-grow: 1;
+    display: flex;
+    background: linear-gradient(135deg, color('white'), color('cool-gray-100'));
+    border-radius: 8px;
+    margin: space(2);
+    height: calc(100vh - 88px);
+    box-shadow: 0 0 1px color('cool-gray-800', 0.2), 0 40px 40px color('cool-gray-800', 0.1), 0 40px 64px -40px color('cool-gray-900', 0.4);
+    z-index: 10;
   }
 
   .nav-content {
+    // padding: space(4) 0;
     position: sticky;
-    top: space(10);
+    top: 0;
+    // margin: auto;
+    padding-bottom: space(20);
+    padding: clamp(space(2), 2vw, space(10));
   }
 
   ul,
@@ -80,5 +96,6 @@ const tokenPages = await Astro.glob('../pages/tokens/*')
     text-decoration: none;
     color: color('cool-gray-600');
     padding: space(0.5) space(1.5);
+    white-space: nowrap;
   }
 </style>

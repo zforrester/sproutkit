@@ -11,9 +11,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.13.0",
-    "@sproutkit/component-library-react": "^0.0.1",
-    "astro": "^1.6.15"
+    "@astrojs/mdx": "^0.14.0",
+    "astro": "^1.9.2"
   },
   "devDependencies": {
     "@astrojs/react": "^1.2.2",
